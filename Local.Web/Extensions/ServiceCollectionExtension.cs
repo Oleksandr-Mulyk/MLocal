@@ -1,4 +1,5 @@
 ﻿using Local.Web.Components.Account;
+using Local.Web.Components.Layout.Alerts;
 using Local.Web.Data;
 using Microsoft.AspNetCore.Components.Authorization;
 
@@ -14,6 +15,7 @@ namespace Local.Web.Extensions
             services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
 
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddSingleton<IMessageManager, MessageManager>();
 
             return services;
         }

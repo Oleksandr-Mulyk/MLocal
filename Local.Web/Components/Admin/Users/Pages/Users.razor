@@ -1,0 +1,52 @@
+﻿<PageTitle>User Management</PageTitle>
+
+<h3>User Management</h3>
+
+@if (users == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <span role="button" @onclick="() => SortBy(IUserRepository.USERNAME_COLUMN_NAME)">User Name</span>
+                    <InputText
+                        id="searchUsername"
+                        class="form-control"
+                        @bind-Value="@searchValues[IUserRepository.USERNAME_COLUMN_NAME]"
+                        @oninput="(e) => OnSearchChanged(IUserRepository.USERNAME_COLUMN_NAME, e.Value.ToString())"
+                        />
+                </th>
+                <th>
+                        <span role="button" @onclick="() => SortBy(IUserRepository.EMAIL_COLUMN_NAME)">Email</span>
+                    <InputText
+                        id="searchEmail"
+                        class="form-control"
+                        @bind-Value="@searchValues[IUserRepository.EMAIL_COLUMN_NAME]"
+                            @oninput="(e) => OnSearchChanged(IUserRepository.EMAIL_COLUMN_NAME, e.Value.ToString())"
+                        />
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var user in users)
+            {
+                <tr>
+                    <td>@user.UserName</td>
+                    <td>@user.Email</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => EditUser(user.Id)">Edit</button>
+                        <button class="btn btn-danger" @onclick="() => DeleteUser(user.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <Pagination TotalItems="totalCount" CurrentPage="currentPage" OnPageChanged="LoadPageAsync" />
+}
+
+<button class="btn btn-success" @onclick="NavigateToCreateUser">Create New User</button>

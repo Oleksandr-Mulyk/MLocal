@@ -2,14 +2,21 @@
 {
     public interface IUserRepository
     {
-        Task<IList<ApplicationUser>> GetAllAsync();
+        public const string USERNAME_COLUMN_NAME = "UserName";
+
+        public const string EMAIL_COLUMN_NAME = "Email";
+
+        IQueryable<ApplicationUser> GetAll(
+            IDictionary<string, string> filters,
+            (string SortColumn, bool IsAscending) sort
+            );
 
         Task<ApplicationUser> GetByIdAsync(string id);
 
-        Task<ApplicationUser> CreateAsync(ApplicationUser user);
+        Task<ApplicationUser> CreateAsync(ApplicationUser user, string password);
 
         Task<ApplicationUser> UpdateAsync(ApplicationUser user);
 
-        Task<ApplicationUser> DeleteAsync(string id);
+        Task DeleteAsync(ApplicationUser user);
     }
 }

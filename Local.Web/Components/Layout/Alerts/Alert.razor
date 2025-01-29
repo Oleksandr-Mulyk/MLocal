@@ -1,0 +1,9 @@
+﻿<div class="message-list al">
+    @foreach (var message in messageManager.Messages)
+    {
+        <div class="message alert @GetMessageClass(message.Type)">
+            @message.Content
+        </div>
+    }
+</div>
+
