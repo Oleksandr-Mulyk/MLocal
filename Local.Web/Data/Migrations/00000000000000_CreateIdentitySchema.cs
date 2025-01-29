@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+using System;
 
 #nullable disable
 
-namespace Web.Migrations
+namespace Local.Web.Migrations
 {
     /// <inheritdoc />
     public partial class CreateIdentitySchema : Migration

@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Primitives;
-using Web.Components.Account.Pages;
-using Web.Components.Account.Pages.Manage;
-using Web.Data;
+using MLocal.Web.Components.Account.Pages;
+using MLocal.Web.Components.Account.Pages.Manage;
+using MLocal.Web.Data;
 
 namespace Microsoft.AspNetCore.Routing
 {
