@@ -1,14 +1,14 @@
-﻿namespace Local.Web.Data
+﻿using System.ComponentModel;
+using System.Linq.Expressions;
+
+namespace Local.Web.Data
 {
     public interface IUserRepository
     {
-        public const string USERNAME_COLUMN_NAME = "UserName";
-
-        public const string EMAIL_COLUMN_NAME = "Email";
-
         IQueryable<ApplicationUser> GetAll(
-            IDictionary<string, string> filters,
-            (string SortColumn, bool IsAscending) sort
+            IEnumerable<Expression<Func<ApplicationUser, bool>>> filterExpressions,
+            Expression<Func<ApplicationUser, string?>> sortExpression,
+            ListSortDirection sortDirection
             );
 
         Task<ApplicationUser> GetByIdAsync(string id);

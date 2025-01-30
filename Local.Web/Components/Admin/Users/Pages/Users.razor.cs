@@ -2,6 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
+using ApplicationUserExpression =
+    System.Linq.Expressions.Expression<System.Func<Local.Web.Data.ApplicationUser, bool>>;
 
 namespace Local.Web.Components.Admin.Users.Pages
 {
@@ -9,6 +12,10 @@ namespace Local.Web.Components.Admin.Users.Pages
     [Authorize]
     public partial class Users(IUserRepository userRepository, NavigationManager navigationManager)
     {
+        private const string USERNAME_COLUMN_NAME = "UserName";
+
+        private const string EMAIL_COLUMN_NAME = "Email";
+
         private IList<ApplicationUser> users = [];
 
         private readonly int itemsPerPage = 10;
@@ -17,14 +24,14 @@ namespace Local.Web.Components.Admin.Users.Pages
 
         private int totalCount;
 
-        private string currentSortColumn = IUserRepository.USERNAME_COLUMN_NAME;
+        private string currentSortColumn = USERNAME_COLUMN_NAME;
 
-        private bool isAscending = true;
+        private ListSortDirection sortDirection = ListSortDirection.Ascending;
 
         private readonly Dictionary<string, string> searchValues = new()
         {
-            { IUserRepository.USERNAME_COLUMN_NAME, string.Empty },
-            { IUserRepository.EMAIL_COLUMN_NAME, string.Empty }
+            { USERNAME_COLUMN_NAME, string.Empty },
+            { EMAIL_COLUMN_NAME, string.Empty }
         };
 
         protected override async Task OnInitializedAsync() =>
@@ -32,13 +39,24 @@ namespace Local.Web.Components.Admin.Users.Pages
 
         private async Task LoadPageAsync(int pageNumber)
         {
+            var filters = searchValues
+                .Where(s => !string.IsNullOrEmpty(s.Value))
+                .Select(s => s.Key switch
+                {
+                    USERNAME_COLUMN_NAME =>
+                        (ApplicationUserExpression)(u => u.UserName != null && u.UserName.Contains(s.Value)),
+                    EMAIL_COLUMN_NAME =>
+                        (ApplicationUserExpression)(u => u.Email != null && u.Email.Contains(s.Value)),
+                    _ => throw new NotImplementedException()
+                });
+
             var userQuery = userRepository.GetAll(
-                searchValues.Where(s => s.Value != string.Empty).ToDictionary(),
-                (currentSortColumn, isAscending)
-                );
+                filters,
+                u => EF.Property<string>(u, currentSortColumn),
+                sortDirection
+            );
 
             totalCount = await userQuery.CountAsync();
-
             currentPage = pageNumber;
             users = await userQuery.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
         }
@@ -56,12 +74,14 @@ namespace Local.Web.Components.Admin.Users.Pages
         {
             if (currentSortColumn == columnName)
             {
-                isAscending = !isAscending;
+                sortDirection = sortDirection == ListSortDirection.Ascending ?
+                    ListSortDirection.Descending :
+                    ListSortDirection.Ascending;
             }
             else
             {
                 currentSortColumn = columnName;
-                isAscending = true;
+                sortDirection = ListSortDirection.Ascending;
             }
             await LoadPageAsync(currentPage);
         }

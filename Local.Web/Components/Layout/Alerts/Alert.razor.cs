@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-
-namespace Local.Web.Components.Layout.Alerts
+﻿namespace Local.Web.Components.Layout.Alerts
 {
     public partial class Alert(IMessageManager messageManager)
     {

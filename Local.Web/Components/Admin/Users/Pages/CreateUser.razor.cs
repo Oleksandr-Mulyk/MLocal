@@ -21,12 +21,12 @@ namespace Local.Web.Components.Admin.Users.Pages
         {
             try
             {
-                var result = await userRepository.CreateAsync(newUser, password);
-                messageManager.AddMessage(new ("User created successfully!", MessageType.Success));
+                var result = await userRepository.CreateAsync(newUser, password ?? string.Empty);
+                messageManager.AddMessage(new("User created successfully!", MessageType.Success));
             }
             catch (Exception ex)
             {
-                messageManager.AddMessage(new (ex.Message, MessageType.Error));
+                messageManager.AddMessage(new(ex.Message, MessageType.Error));
             }
 
             navigationManager.NavigateTo(Routes.USER_LIST_PAGE, true);

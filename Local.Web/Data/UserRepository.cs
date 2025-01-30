@@ -1,48 +1,30 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel;
+using System.Linq.Expressions;
 
 namespace Local.Web.Data
 {
     public class UserRepository(UserManager<ApplicationUser> userManager) : IUserRepository
     {
         public IQueryable<ApplicationUser> GetAll(
-            IDictionary<string, string>? filters = null,
-            (string SortColumn, bool IsAscending) sort = default
+            IEnumerable<Expression<Func<ApplicationUser, bool>>>? filterExpressions = null,
+            Expression<Func<ApplicationUser, string?>>? sortExpression = null,
+            ListSortDirection sortDirection = ListSortDirection.Ascending
             )
         {
             var users = userManager.Users;
 
-            if (filters is not null)
+            if (filterExpressions is not null)
             {
-                foreach (var filter in filters)
-                {
-                    switch (filter.Key)
-                    {
-                        case IUserRepository.USERNAME_COLUMN_NAME:
-                            users = users.Where(u => u.UserName.Contains(filter.Value));
-                            break;
-                        case IUserRepository.EMAIL_COLUMN_NAME:
-                            users = users.Where(u => u.Email.Contains(filter.Value));
-                            break;
-                    }
-                }
+                users = filterExpressions.Aggregate(users, (current, filter) => current.Where(filter));
             }
 
-            if (sort != default)
+            if (sortExpression is not null)
             {
-                switch (sort.SortColumn)
-                {
-                    case IUserRepository.USERNAME_COLUMN_NAME:
-                        users = sort.IsAscending ?
-                            users.OrderBy(u => u.UserName) :
-                            users.OrderByDescending(u => u.UserName);
-                        break;
-                    case IUserRepository.EMAIL_COLUMN_NAME:
-                        users = sort.IsAscending ?
-                            users.OrderBy(u => u.Email) :
-                            users.OrderByDescending(u => u.Email);
-                        break;
-                }
+                users = sortDirection == ListSortDirection.Ascending ?
+                    users.OrderBy(sortExpression) :
+                    users.OrderByDescending(sortExpression);
             }
 
             return users;
@@ -78,9 +60,9 @@ namespace Local.Web.Data
 
         public async Task DeleteAsync(ApplicationUser user)
         {
-                var result = await userManager.DeleteAsync(user);
-                if (!result.Succeeded)
-                    throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
+            var result = await userManager.DeleteAsync(user);
+            if (!result.Succeeded)
+                throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
         }
     }
 }

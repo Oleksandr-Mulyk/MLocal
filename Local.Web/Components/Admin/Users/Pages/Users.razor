@@ -12,21 +12,21 @@ else
         <thead>
             <tr>
                 <th>
-                    <span role="button" @onclick="() => SortBy(IUserRepository.USERNAME_COLUMN_NAME)">User Name</span>
+                    <span role="button" @onclick="() => SortBy(USERNAME_COLUMN_NAME)">User Name</span>
                     <InputText
                         id="searchUsername"
                         class="form-control"
-                        @bind-Value="@searchValues[IUserRepository.USERNAME_COLUMN_NAME]"
-                        @oninput="(e) => OnSearchChanged(IUserRepository.USERNAME_COLUMN_NAME, e.Value.ToString())"
+                        @bind-Value="@searchValues[USERNAME_COLUMN_NAME]"
+                        @oninput="(e) => OnSearchChanged(USERNAME_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)"
                         />
                 </th>
                 <th>
-                        <span role="button" @onclick="() => SortBy(IUserRepository.EMAIL_COLUMN_NAME)">Email</span>
+                        <span role="button" @onclick="() => SortBy(EMAIL_COLUMN_NAME)">Email</span>
                     <InputText
                         id="searchEmail"
                         class="form-control"
-                        @bind-Value="@searchValues[IUserRepository.EMAIL_COLUMN_NAME]"
-                            @oninput="(e) => OnSearchChanged(IUserRepository.EMAIL_COLUMN_NAME, e.Value.ToString())"
+                        @bind-Value="@searchValues[EMAIL_COLUMN_NAME]"
+                            @oninput="(e) => OnSearchChanged(EMAIL_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)"
                         />
                 </th>
                 <th>Actions</th>
