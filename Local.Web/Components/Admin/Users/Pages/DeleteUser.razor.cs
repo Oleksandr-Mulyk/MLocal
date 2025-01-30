@@ -31,7 +31,7 @@ namespace Local.Web.Components.Admin.Users.Pages
             }
             catch (Exception ex)
             {
-                messageManager.AddMessage(new Message(ex.Message, MessageType.Error));
+                messageManager.AddMessage(new Message(ex.Message, MessageType.Danger));
             }
 
             navigationManager.NavigateTo(Routes.USER_LIST_PAGE, true);

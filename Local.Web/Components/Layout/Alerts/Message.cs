@@ -5,5 +5,7 @@
         public string Content { get; set; } = content;
 
         public MessageType Type { get; set; } = type;
+
+        public readonly string HtmlClass => "alert-" + Type.ToString().ToLower();
     }
 }

@@ -1,7 +1,7 @@
 ﻿<div class="message-list al">
     @foreach (var message in messageManager.Messages)
     {
-        <div class="message alert @GetMessageClass(message.Type)">
+        <div class="message alert @message.HtmlClass">
             @message.Content
         </div>
     }
