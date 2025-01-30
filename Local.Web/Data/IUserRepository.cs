@@ -15,7 +15,7 @@ namespace Local.Web.Data
 
         Task<ApplicationUser> CreateAsync(ApplicationUser user, string password);
 
-        Task<ApplicationUser> UpdateAsync(ApplicationUser user);
+        Task<ApplicationUser> UpdateAsync(ApplicationUser user, string? password = null);
 
         Task DeleteAsync(ApplicationUser user);
     }

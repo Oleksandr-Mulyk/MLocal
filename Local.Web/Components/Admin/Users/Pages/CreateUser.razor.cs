@@ -1,4 +1,5 @@
-﻿using Local.Web.Components.Layout.Alerts;
+﻿using Local.Web.Components.Admin.Users.Pages.ViewModel;
+using Local.Web.Components.Layout.Alerts;
 using Local.Web.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
@@ -13,23 +14,27 @@ namespace Local.Web.Components.Admin.Users.Pages
         IMessageManager messageManager
         )
     {
-        private readonly ApplicationUser newUser = new();
-
-        private string? password;
+        private readonly UserViewModel userViewModel = new();
 
         private async Task HandleValidSubmit()
         {
             try
             {
-                var result = await userRepository.CreateAsync(newUser, password ?? string.Empty);
+                ApplicationUser newUser = new()
+                {
+                    UserName = userViewModel.UserName,
+                    Email = userViewModel.Email,
+                    EmailConfirmed = true
+                };
+                var result = await userRepository.CreateAsync(newUser, userViewModel.Password ?? string.Empty);
                 messageManager.AddMessage(new("User created successfully!", MessageType.Success));
+                navigationManager.NavigateTo(AdminUserRoute.USER_LIST_PAGE, true);
             }
             catch (Exception ex)
             {
                 messageManager.AddMessage(new(ex.Message, MessageType.Danger));
+                navigationManager.NavigateTo(AdminUserRoute.CREATE_USER_PAGE, true);
             }
-
-            navigationManager.NavigateTo(AdminUserRoute.USER_LIST_PAGE, true);
         }
     }
 }

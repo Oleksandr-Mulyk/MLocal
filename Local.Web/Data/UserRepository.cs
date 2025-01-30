@@ -49,10 +49,14 @@ namespace Local.Web.Data
                 throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
         }
 
-        public async Task<ApplicationUser> UpdateAsync(ApplicationUser user)
+        public async Task<ApplicationUser> UpdateAsync(ApplicationUser user, string? password = null)
         {
-            var result = await userManager.UpdateAsync(user);
+            if (!string.IsNullOrEmpty(password))
+            {
+                user = await SetUserPasswordAsync(user, password);
+            }
 
+            var result = await userManager.UpdateAsync(user);
             return result.Succeeded ?
                 user :
                 throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
@@ -63,6 +67,16 @@ namespace Local.Web.Data
             var result = await userManager.DeleteAsync(user);
             if (!result.Succeeded)
                 throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
+        }
+
+        private async Task<ApplicationUser> SetUserPasswordAsync(ApplicationUser user, string password)
+        {
+            var token = await userManager.GeneratePasswordResetTokenAsync(user);
+            var passwordResult = await userManager.ResetPasswordAsync(user, token, password);
+
+            return passwordResult.Succeeded ?
+                user :
+                throw new Exception(string.Join(", ", passwordResult.Errors.Select(e => e.Description)));
         }
     }
 }

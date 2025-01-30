@@ -1,4 +1,5 @@
-﻿using Local.Web.Components.Layout.Alerts;
+﻿using Local.Web.Components.Admin.Users.Pages.ViewModel;
+using Local.Web.Components.Layout.Alerts;
 using Local.Web.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
@@ -18,23 +19,41 @@ namespace Local.Web.Components.Admin.Users.Pages
 
         private ApplicationUser user = new();
 
-        protected override async Task OnInitializedAsync() =>
+        private UserViewModel userViewModel = new();
+
+        protected override async Task OnInitializedAsync()
+        {
             user = await userRepository.GetByIdAsync(Id) ??
             throw new InvalidOperationException($"User with ID {Id} not found!");
+
+            userViewModel = new UserViewModel
+            {
+                UserName = user.UserName!,
+                Email = user.Email
+            };
+        }
 
         private async Task HandleValidSubmit()
         {
             try
             {
-                await userRepository.UpdateAsync(user);
+                user.UserName = userViewModel.UserName;
+                user.Email = userViewModel.Email;
+
+                var password = string.IsNullOrEmpty(userViewModel.Password) ? null : userViewModel.Password;
+
+                await userRepository.UpdateAsync(user, password);
                 messageManager.AddMessage(new Message("User updated successfully!", MessageType.Success));
+
+                navigationManager.NavigateTo(AdminUserRoute.USER_LIST_PAGE, true);
             }
             catch (Exception ex)
             {
                 messageManager.AddMessage(new Message(ex.Message, MessageType.Danger));
+                navigationManager.NavigateTo(
+                    AdminUserRoute.UPDATE_USER_PAGE.Replace("{" + AdminUserRoute.USER_ID_PARAM_NAME + "}", Id)
+                    );
             }
-
-            navigationManager.NavigateTo(AdminUserRoute.USER_LIST_PAGE, true);
         }
     }
 }
