@@ -15,6 +15,7 @@ namespace Local.Web.Extensions
             services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
 
             services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
             services.AddSingleton<IMessageManager, MessageManager>();
 
             return services;
