@@ -8,7 +8,7 @@ using ApplicationUserExpression =
 
 namespace Local.Web.Components.Admin.Users.Pages
 {
-    [Route(Routes.USER_LIST_PAGE)]
+    [Route(AdminUserRoute.USER_LIST_PAGE)]
     [Authorize]
     public partial class Users(IUserRepository userRepository, NavigationManager navigationManager)
     {
@@ -44,7 +44,7 @@ namespace Local.Web.Components.Admin.Users.Pages
                 .Select(s => s.Key switch
                 {
                     USERNAME_COLUMN_NAME =>
-                        (ApplicationUserExpression)(u => u.UserName != null && u.UserName.Contains(s.Value)),
+                        u => u.UserName != null && u.UserName.Contains(s.Value),
                     EMAIL_COLUMN_NAME =>
                         (ApplicationUserExpression)(u => u.Email != null && u.Email.Contains(s.Value)),
                     _ => throw new NotImplementedException()
@@ -62,13 +62,13 @@ namespace Local.Web.Components.Admin.Users.Pages
         }
 
         private void NavigateToCreateUser() =>
-            navigationManager.NavigateTo(Routes.CREATE_USER_PAGE);
+            navigationManager.NavigateTo(AdminUserRoute.CREATE_USER_PAGE);
 
         private void EditUser(string id) =>
-            navigationManager.NavigateTo(Routes.UPDATE_USER_PAGE.Replace("{" + Routes.USER_ID_PARAM_NAME + "}", id));
+            navigationManager.NavigateTo(AdminUserRoute.UPDATE_USER_PAGE.Replace("{" + AdminUserRoute.USER_ID_PARAM_NAME + "}", id));
 
         private void DeleteUser(string id) =>
-            navigationManager.NavigateTo(Routes.DELETE_USER_PAGE.Replace("{" + Routes.USER_ID_PARAM_NAME + "}", id));
+            navigationManager.NavigateTo(AdminUserRoute.DELETE_USER_PAGE.Replace("{" + AdminUserRoute.USER_ID_PARAM_NAME + "}", id));
 
         private async Task SortBy(string columnName)
         {

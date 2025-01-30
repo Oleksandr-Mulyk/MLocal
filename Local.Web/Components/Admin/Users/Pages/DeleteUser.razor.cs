@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Components;
 
 namespace Local.Web.Components.Admin.Users.Pages
 {
-    [Route(Routes.DELETE_USER_PAGE)]
+    [Route(AdminUserRoute.DELETE_USER_PAGE)]
     [Authorize]
     public partial class DeleteUser(
         IUserRepository userRepository,
@@ -34,10 +34,10 @@ namespace Local.Web.Components.Admin.Users.Pages
                 messageManager.AddMessage(new Message(ex.Message, MessageType.Danger));
             }
 
-            navigationManager.NavigateTo(Routes.USER_LIST_PAGE, true);
+            navigationManager.NavigateTo(AdminUserRoute.USER_LIST_PAGE, true);
         }
 
         private void Cancel() =>
-            navigationManager.NavigateTo(Routes.USER_LIST_PAGE, true);
+            navigationManager.NavigateTo(AdminUserRoute.USER_LIST_PAGE, true);
     }
 }
