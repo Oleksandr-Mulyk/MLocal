@@ -30,9 +30,6 @@ namespace Local.Web.Data
             return users;
         }
 
-        public async Task<IList<ApplicationUser>> GetAllAsync() =>
-            await userManager.Users.ToListAsync();
-
         public async Task<int> GetTotalCount() =>
             await userManager.Users.CountAsync();
 
