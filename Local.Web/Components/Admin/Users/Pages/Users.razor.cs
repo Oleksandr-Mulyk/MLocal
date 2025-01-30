@@ -65,7 +65,7 @@ namespace Local.Web.Components.Admin.Users.Pages
             navigationManager.NavigateTo(Routes.CREATE_USER_PAGE);
 
         private void EditUser(string id) =>
-            navigationManager.NavigateTo(Routes.DELETE_USER_PAGE.Replace("{" + Routes.USER_ID_PARAM_NAME + "}", id));
+            navigationManager.NavigateTo(Routes.UPDATE_USER_PAGE.Replace("{" + Routes.USER_ID_PARAM_NAME + "}", id));
 
         private void DeleteUser(string id) =>
             navigationManager.NavigateTo(Routes.DELETE_USER_PAGE.Replace("{" + Routes.USER_ID_PARAM_NAME + "}", id));
