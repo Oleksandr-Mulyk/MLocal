@@ -2,6 +2,7 @@
 using Local.Web.Components.Layout.Alerts;
 using Local.Web.Data;
 using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace Local.Web.Extensions
 {
@@ -16,6 +17,7 @@ namespace Local.Web.Extensions
 
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
+
             services.AddSingleton<IMessageManager, MessageManager>();
 
             return services;

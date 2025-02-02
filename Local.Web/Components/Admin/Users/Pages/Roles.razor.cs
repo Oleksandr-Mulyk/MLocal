@@ -1,22 +1,21 @@
 ﻿using Local.Web.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
-using ApplicationUserExpression =
-    System.Linq.Expressions.Expression<System.Func<Local.Web.Data.ApplicationUser, bool>>;
+using IdentityRoleExpression =
+    System.Linq.Expressions.Expression<System.Func<Microsoft.AspNetCore.Identity.IdentityRole, bool>>;
 
 namespace Local.Web.Components.Admin.Users.Pages
 {
-    [Route(AdminUserRoute.USER_LIST_PAGE)]
+    [Route(AdminUserRoute.ROLE_LIST_PAGE)]
     [Authorize]
-    public partial class Users(IUserRepository userRepository, NavigationManager navigationManager)
+    public partial class Roles(IRoleRepository roleRepository, NavigationManager navigationManager)
     {
-        private const string USERNAME_COLUMN_NAME = "UserName";
+        private const string NAME_COLUMN_NAME = "Name";
 
-        private const string EMAIL_COLUMN_NAME = "Email";
-
-        private IList<ApplicationUser>? users;
+        private IList<IdentityRole>? roles;
 
         private readonly int itemsPerPage = 10;
 
@@ -24,14 +23,13 @@ namespace Local.Web.Components.Admin.Users.Pages
 
         private int totalCount;
 
-        private string currentSortColumn = USERNAME_COLUMN_NAME;
+        private string currentSortColumn = NAME_COLUMN_NAME;
 
         private ListSortDirection sortDirection = ListSortDirection.Ascending;
 
         private readonly Dictionary<string, string> searchValues = new()
         {
-            { USERNAME_COLUMN_NAME, string.Empty },
-            { EMAIL_COLUMN_NAME, string.Empty }
+            { NAME_COLUMN_NAME, string.Empty }
         };
 
         protected override async Task OnInitializedAsync() =>
@@ -43,14 +41,12 @@ namespace Local.Web.Components.Admin.Users.Pages
                 .Where(s => !string.IsNullOrEmpty(s.Value))
                 .Select(s => s.Key switch
                 {
-                    USERNAME_COLUMN_NAME =>
-                        u => u.UserName != null && u.UserName.Contains(s.Value),
-                    EMAIL_COLUMN_NAME =>
-                        (ApplicationUserExpression)(u => u.Email != null && u.Email.Contains(s.Value)),
+                    NAME_COLUMN_NAME =>
+                        (IdentityRoleExpression)(r => r.Name != null && r.Name.Contains(s.Value)),
                     _ => throw new NotImplementedException()
                 });
 
-            var userQuery = userRepository.GetAll(
+            var userQuery = roleRepository.GetAll(
                 filters,
                 u => EF.Property<string>(u, currentSortColumn),
                 sortDirection
@@ -58,17 +54,21 @@ namespace Local.Web.Components.Admin.Users.Pages
 
             totalCount = await userQuery.CountAsync();
             currentPage = pageNumber;
-            users = await userQuery.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
+            roles = await userQuery.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
         }
 
-        private void NavigateToCreateUser() =>
-            navigationManager.NavigateTo(AdminUserRoute.CREATE_USER_PAGE);
+        private void NavigateToCreateRole() =>
+            navigationManager.NavigateTo(AdminUserRoute.CREATE_ROLE_PAGE);
 
-        private void EditUser(string id) =>
-            navigationManager.NavigateTo(AdminUserRoute.UPDATE_USER_PAGE.Replace("{" + AdminUserRoute.USER_ID_PARAM_NAME + "}", id));
+        private void NavigateToEditRole(string roleId) =>
+            navigationManager.NavigateTo(
+                AdminUserRoute.UPDATE_ROLE_PAGE.Replace("{" + AdminUserRoute.ROLE_ID_PARAM_NAME + "}", roleId)
+                );
 
-        private void DeleteUser(string id) =>
-            navigationManager.NavigateTo(AdminUserRoute.DELETE_USER_PAGE.Replace("{" + AdminUserRoute.USER_ID_PARAM_NAME + "}", id));
+        private void NavigateToDeleteRole(string roleId) =>
+            navigationManager.NavigateTo(
+                AdminUserRoute.DELETE_ROLE_PAGE.Replace("{" + AdminUserRoute.ROLE_ID_PARAM_NAME + "}", roleId)
+                );
 
         private async Task SortBy(string columnName)
         {

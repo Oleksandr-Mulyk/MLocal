@@ -21,13 +21,13 @@ else
             </tr>
             <tr>
                 <th>
-                    <InputText id="searchEmail"
+                    <InputText id="searchUserName"
                                class="form-control"
                                @bind-Value="@searchValues[USERNAME_COLUMN_NAME]"
                                @oninput="(e) => OnSearchChanged(USERNAME_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)" />
                 </th>
                 <th>
-                    <InputText id="searchUsername"
+                    <InputText id="searchEmail"
                                class="form-control"
                                @bind-Value="@searchValues[EMAIL_COLUMN_NAME]"
                                @oninput="(e) => OnSearchChanged(EMAIL_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)"

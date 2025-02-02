@@ -1,0 +1,15 @@
+﻿<PageTitle>Create Role</PageTitle>
+
+<h3>CreateRole</h3>
+
+<EditForm Model="roleViewModel" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Role Name</label>
+        <InputText id="name" class="form-control" @bind-Value="roleViewModel.Name" />
+        <ValidationMessage For="@(() => roleViewModel.Name)" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+</EditForm>

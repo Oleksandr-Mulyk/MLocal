@@ -1,0 +1,16 @@
+﻿<PageTitle>Update Role @roleViewModel.Name</PageTitle>
+
+<h3>Update User @roleViewModel.Name</h3>
+
+<EditForm Model="roleViewModel" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="name" class="form-label">Role Name</label>
+        <InputText id="name" class="form-control" @bind-Value="roleViewModel.Name" />
+        <ValidationMessage For="@(() => roleViewModel.Name)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</EditForm>

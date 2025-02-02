@@ -1,0 +1,45 @@
+﻿<PageTitle>Role Management</PageTitle>
+
+<h3>Role Management</h3>
+
+@if (roles == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <span role="button" @onclick="() => SortBy(NAME_COLUMN_NAME)">Role Name</span>
+                </th>
+                <th>Actions</th>
+            </tr>
+            <tr>
+                <th>
+                    <InputText id="searchName"
+                               class="form-control"
+                               @bind-Value="@searchValues[NAME_COLUMN_NAME]"
+                               @oninput="(e) => OnSearchChanged(NAME_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)" />
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in roles)
+            {
+                <tr>
+                    <td>@role.Name</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => NavigateToEditRole(role.Id)">Edit</button>
+                        <button class="btn btn-danger" @onclick="() => NavigateToDeleteRole(role.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <Pagination TotalItems="totalCount" CurrentPage="currentPage" OnPageChanged="LoadPageAsync" />
+}
+
+<button class="btn btn-success" @onclick="NavigateToCreateRole">Create New Role</button>
