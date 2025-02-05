@@ -1,4 +1,4 @@
-﻿using Local.Web.Data;
+﻿using Local.Web.Data.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Moq;

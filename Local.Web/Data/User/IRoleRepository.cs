@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace Local.Web.Data
+namespace Local.Web.Data.User
 {
     public interface IRoleRepository
     {

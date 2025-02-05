@@ -1,5 +1,5 @@
 ﻿using Local.Web.Components.Layout.Alerts;
-using Local.Web.Data;
+using Local.Web.Data.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Identity;

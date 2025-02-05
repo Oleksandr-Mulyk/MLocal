@@ -1,4 +1,4 @@
-﻿namespace Local.Web.Data
+﻿namespace Local.Web.Data.ToDo
 {
     public enum ToDoItemStatus
     {

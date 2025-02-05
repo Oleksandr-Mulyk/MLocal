@@ -1,7 +1,7 @@
 ﻿using Local.Web.Components.Account;
 using Local.Web.Components.Layout.Alerts;
-using Local.Web.Data;
 using Local.Web.Data.ToDo;
+using Local.Web.Data.User;
 using Microsoft.AspNetCore.Components.Authorization;
 
 namespace Local.Web.Extensions

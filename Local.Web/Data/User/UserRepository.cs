@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
 using System.Linq.Expressions;
 
-namespace Local.Web.Data
+namespace Local.Web.Data.User
 {
     public class UserRepository(UserManager<ApplicationUser> userManager) : IUserRepository
     {
