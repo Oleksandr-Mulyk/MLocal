@@ -71,7 +71,11 @@ namespace Local.Web.Test
         {
             // Arrange
             var user = new ApplicationUser { UserName = "user1" };
-            _userManagerMock.Setup(x => x.CreateAsync(user, "password")).ReturnsAsync(IdentityResult.Failed(new IdentityError { Description = "User creation failed" }));
+            _userManagerMock.Setup(
+                x => x
+                .CreateAsync(user, "password"))
+                .ReturnsAsync(IdentityResult.Failed(new IdentityError { Description = "User creation failed" })
+                );
 
             // Act & Assert
             await Assert.ThrowsAsync<Exception>(async () => await _userRepository.CreateAsync(user, "password"));
@@ -96,7 +100,11 @@ namespace Local.Web.Test
         {
             // Arrange
             var user = new ApplicationUser { UserName = "user1" };
-            _userManagerMock.Setup(x => x.UpdateAsync(user)).ReturnsAsync(IdentityResult.Failed(new IdentityError { Description = "User update failed" }));
+            _userManagerMock.Setup(
+                x => x
+                .UpdateAsync(user))
+                .ReturnsAsync(IdentityResult.Failed(new IdentityError { Description = "User update failed" })
+                );
 
             // Act & Assert
             await Assert.ThrowsAsync<Exception>(async () => await _userRepository.UpdateAsync(user));
@@ -121,7 +129,11 @@ namespace Local.Web.Test
         {
             // Arrange
             var user = new ApplicationUser { UserName = "user1" };
-            _userManagerMock.Setup(x => x.DeleteAsync(user)).ReturnsAsync(IdentityResult.Failed(new IdentityError { Description = "User deletion failed" }));
+            _userManagerMock.Setup(
+                x => x
+                .DeleteAsync(user))
+                .ReturnsAsync(IdentityResult.Failed(new IdentityError { Description = "User deletion failed" })
+                );
 
             // Act & Assert
             await Assert.ThrowsAsync<Exception>(async () => await _userRepository.DeleteAsync(user));

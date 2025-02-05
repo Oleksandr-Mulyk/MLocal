@@ -1,8 +1,8 @@
 ﻿using Local.Web.Components.Account;
 using Local.Web.Components.Layout.Alerts;
 using Local.Web.Data;
+using Local.Web.Data.ToDo;
 using Microsoft.AspNetCore.Components.Authorization;
-using Microsoft.AspNetCore.Identity;
 
 namespace Local.Web.Extensions
 {
@@ -17,6 +17,7 @@ namespace Local.Web.Extensions
 
             services.AddTransient<IUserRepository, UserRepository>();
             services.AddTransient<IRoleRepository, RoleRepository>();
+            services.AddTransient<IToDoRepository, ToDoRepository>();
 
             services.AddSingleton<IMessageManager, MessageManager>();
 
