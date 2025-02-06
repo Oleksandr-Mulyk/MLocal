@@ -12,7 +12,12 @@ namespace Local.Web.Data.ToDo
             ListSortDirection sortDirection = ListSortDirection.Ascending
             )
         {
-            var toDoItems = applicationDbContext.ToDoItems.AsQueryable().Select(item => (IToDoItem)item);
+            var toDoItems = applicationDbContext.ToDoItems
+                .Include(item => item.CreatedBy)
+                .Include(item => item.AssignedTo)
+                .Include(item => item.VisibleFor)
+                .AsQueryable()
+                .Select(item => (IToDoItem)item);
 
             if (filterExpressions is not null)
             {
@@ -60,27 +65,40 @@ namespace Local.Web.Data.ToDo
         {
             var result = await applicationDbContext.ToDoItems
                 .AddAsync(toDoItem as ToDoItem ?? throw new InvalidCastException());
-            await applicationDbContext.SaveChangesAsync();
+            
+            if (result.State == EntityState.Added)
+            {
+                await applicationDbContext.SaveChangesAsync();
+                return result.Entity;
+            }
 
-            return result.State == EntityState.Added ? result.Entity : throw new Exception("ToDo Item not created");
+            throw new Exception("ToDo Item not created");
         }
 
         public async Task<IToDoItem> UpdateAsync(IToDoItem toDoItem)
         {
             var result = applicationDbContext.ToDoItems
                 .Update(toDoItem as ToDoItem ?? throw new InvalidCastException());
-            await applicationDbContext.SaveChangesAsync();
 
-            return result.State == EntityState.Modified ? result.Entity : throw new Exception("ToDo Item not updated");
+            if (result.State == EntityState.Modified)
+            {
+                await applicationDbContext.SaveChangesAsync();
+                return result.Entity;
+            }
+
+            throw new Exception("ToDo Item not updated");
         }
 
         public async Task DeleteAsync(IToDoItem toDoItem)
         {
             var result = applicationDbContext.ToDoItems
                 .Remove(toDoItem as ToDoItem ?? throw new InvalidCastException());
-            await applicationDbContext.SaveChangesAsync();
 
-            if (result.State != EntityState.Deleted)
+            if (result.State == EntityState.Deleted)
+            {
+                await applicationDbContext.SaveChangesAsync();
+            }
+            else
             {
                 throw new Exception("ToDo Item not deleted");
             }

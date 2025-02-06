@@ -37,6 +37,10 @@ namespace Local.Web.Data.User
             await userManager.FindByIdAsync(id) ??
             throw new Exception("User not found");
 
+        public async Task<ApplicationUser> GetByUserNameAsync(string userName) =>
+            await userManager.Users.FirstOrDefaultAsync(u => u.UserName == userName) ??
+            throw new Exception("User not found");
+
         public async Task<ApplicationUser> CreateAsync(ApplicationUser user, string password)
         {
             var result = await userManager.CreateAsync(user, password);

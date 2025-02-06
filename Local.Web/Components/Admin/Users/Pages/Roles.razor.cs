@@ -46,15 +46,15 @@ namespace Local.Web.Components.Admin.Users.Pages
                     _ => throw new NotImplementedException()
                 });
 
-            var userQuery = roleRepository.GetAll(
+            var roleQuery = roleRepository.GetAll(
                 filters,
                 u => EF.Property<string>(u, currentSortColumn),
                 sortDirection
             );
 
-            totalCount = await userQuery.CountAsync();
+            totalCount = await roleQuery.CountAsync();
             currentPage = pageNumber;
-            roles = await userQuery.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
+            roles = await roleQuery.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
         }
 
         private void NavigateToCreateRole() =>

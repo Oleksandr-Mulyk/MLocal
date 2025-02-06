@@ -1,0 +1,141 @@
+﻿<PageTitle>ToDo List</PageTitle>
+
+<h3>ToDo List</h3>
+
+@if (toDoList == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    <span role="button" @onclick="() => SortBy(TITLE_COLUMN_NAME)">Title</span>
+                </th>
+                <th>
+                    <span role="button" @onclick="() => SortBy(STATUS_COLUMN_NAME)">Status</span>
+                </th>
+                <th>
+                    <span role="button" @onclick="() => SortBy(CREATED_BY_COLUMN_NAME)">Created by</span>
+                </th>
+                <th>
+                    <span role="button" @onclick="() => SortBy(CREATED_COLUMN_NAME)">Created</span>
+                </th>
+                <th>
+                    <span>Assigned To</span>
+                </th>
+                <th>
+                    <span role="button" @onclick="() => SortBy(DEATHLINE_COLUMN_NAME)">Death Line</span>
+                </th>
+                <th></th>
+            </tr>
+            <tr>
+                <th>
+                    <InputText
+                        id="searchTitle"
+                        class="form-control"
+                        @bind-Value="@stringSearchValues[TITLE_COLUMN_NAME]"
+                        @oninput="(e) => OnSearchChanged(TITLE_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)" />
+                </th>
+                <th>
+                    <InputSelect
+                        id="searchStatus"
+                        class="form-control"
+                        @bind-Value="@stringSearchValues[STATUS_COLUMN_NAME]"
+                        @oninput="(e) => OnSearchChanged(STATUS_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)">
+                        <option value="">All</option>
+                        @foreach (var status in statuses)
+                        {
+                            <option value="@status">@status</option>
+                        }
+                    </InputSelect>
+                </th>
+                <th>
+                    <InputText
+                        id="searchCreatedBy"
+                        class="form-control"
+                        @bind-Value="@stringSearchValues[CREATED_BY_COLUMN_NAME]"
+                        @oninput="(e) => OnSearchChanged(CREATED_BY_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)" />
+                </th>
+                <th>
+                    <div>
+                        <label for="createdFrom" class="form-label">From</label>
+                        <InputDate
+                            Type="InputDateType.DateTimeLocal"
+                            id="createdFrom"
+                            class="form-control"
+                            @bind-Value='dateTimeSearchValues[CREATED_COLUMN_NAME + "_from"]'
+                                   @oninput='(e) => OnDateTimeSearchChanged(CREATED_COLUMN_NAME + "_from", e)' />
+                    </div>
+                    <div>
+                        <label for="createdTo" class="form-label">To</label>
+                        <InputDate
+                            Type="InputDateType.DateTimeLocal"
+                            id="createdTo"
+                            class="form-control"
+                            @bind-Value='dateTimeSearchValues[CREATED_COLUMN_NAME + "_to"]'
+                                   @oninput='(e) => OnDateTimeSearchChanged(CREATED_COLUMN_NAME + "_to", e)' />
+                    </div>
+                </th>
+                <th>
+                    <InputText
+                        id="searchAssignedTo"
+                        class="form-control"
+                        @bind-Value="@stringSearchValues[ASSIGNED_TO_COLUMN_NAME]"
+                        @oninput="(e) => OnSearchChanged(ASSIGNED_TO_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)" />
+                </th>
+                <th>
+                    <div>
+                        <label for="deathLineFrom" class="form-label">From</label>
+                        <InputDate
+                            Type="InputDateType.DateTimeLocal"
+                            id="deathLineFrom"
+                            class="form-control"
+                            @bind-Value='dateTimeSearchValues[DEATHLINE_COLUMN_NAME + "_from"]'
+                                   @oninput='(e) => OnDateTimeSearchChanged(DEATHLINE_COLUMN_NAME + "_from", e)' />
+                    </div>
+                    <div>
+                        <label for="deathLineTo" class="form-label">To</label>
+                        <InputDate
+                            Type="InputDateType.DateTimeLocal"
+                            id="deathLineTo"
+                            class="form-control"
+                            @bind-Value='dateTimeSearchValues[DEATHLINE_COLUMN_NAME + "_to"]'
+                                   @oninput='(e) => OnDateTimeSearchChanged(DEATHLINE_COLUMN_NAME + "_to", e)' />
+                    </div>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var toDo in toDoList)
+            {
+                <tr>
+                    <td>@toDo.Title</td>
+                    <td>@toDo.Status.ToString()</td>
+                    <td>@(toDo.CreatedBy.UserName ?? toDo.CreatedBy.Email)</td>
+                    <td>@toDo.Created</td>
+                    <td>
+                        @if (toDo.AssignedTo?.Count > 0)
+                        {
+                            @((MarkupString)(toDo.AssignedTo
+                            .Select(x => x.UserName ?? x.Email)
+                            .Aggregate((x, y) => $"{x}<br/>{y}")
+                            ))
+                        }
+                    </td>
+                    <td>@toDo.DeathLine.ToString()</td>
+                    <td>
+                        <button class="btn btn-primary" @onclick="() => NavigateToEditToDo(toDo.Id)">View</button>
+                        <button class="btn btn-danger" @onclick="() => NavigateToDeleteToDo(toDo.Id)">Delete</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <Pagination TotalItems="totalCount" CurrentPage="currentPage" OnPageChanged="LoadPageAsync" />
+}
+
+<button class="btn btn-success" @onclick="NavigateToCreateToDo">Create New ToDo</button>

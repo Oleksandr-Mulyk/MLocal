@@ -1,0 +1,53 @@
+﻿<PageTitle>Create ToDo</PageTitle>
+
+<h3>Create ToDo</h3>
+
+<EditForm Model="toDoViewModel" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <InputText id="title" class="form-control" @bind-Value="toDoViewModel.Title" />
+        <ValidationMessage For="@(() => toDoViewModel.Title)" />
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <InputTextArea id="description" class="form-control" @bind-Value="toDoViewModel.Description" />
+        <ValidationMessage For="@(() => toDoViewModel.Description)" />
+    </div>
+
+    <div class="mb-3">
+        <label for="deathLine" class="form-label">Death Line</label>
+        <InputDate
+            Type="InputDateType.DateTimeLocal"
+            id="deathLine"
+            class="form-control"
+            @bind-Value="toDoViewModel.DeathLine" />
+        <ValidationMessage For="@(() => toDoViewModel.DeathLine)" />
+    </div>
+
+    <div class="mb-3">
+        <label for="assignedTo" class="form-label">Assigned To</label>
+        <InputSelect multiple id="assignedTo" class="form-control" @bind-Value="toDoViewModel.AssignedTo">
+            @foreach (var user in users)
+            {
+                <option value="@user.Id">@(user.UserName ?? user.Email)</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => toDoViewModel.AssignedTo)" />
+    </div>
+
+    <div class="mb-3">
+        <label for="visibleFor" class="form-label">Visible For</label>
+        <InputSelect multiple id="visibleFor" class="form-control" @bind-Value="toDoViewModel.VisibleFor">
+            @foreach (var user in users)
+            {
+                <option value="@user.Id">@(user.UserName ?? user.Email)</option>
+            }
+        </InputSelect>
+        <ValidationMessage For="@(() => toDoViewModel.VisibleFor)" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+</EditForm>
