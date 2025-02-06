@@ -1,38 +1,46 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace Local.Web.Migrations
 {
     /// <inheritdoc />
-    public partial class ToDoMigration : Migration
+    public partial class ToDoListMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUsers_ToDoItems_ToDoItemId",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropForeignKey(
-                name: "FK_AspNetUsers_ToDoItems_ToDoItemId1",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropIndex(
-                name: "IX_AspNetUsers_ToDoItemId",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropIndex(
-                name: "IX_AspNetUsers_ToDoItemId1",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "ToDoItemId",
-                table: "AspNetUsers");
-
-            migrationBuilder.DropColumn(
-                name: "ToDoItemId1",
-                table: "AspNetUsers");
+            migrationBuilder.CreateTable(
+                name: "ToDoItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Status = table.Column<int>(type: "int", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Created = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    CreatedById = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    DeathLine = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    StatusChanged = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    StatusChangedById = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    StatusComment = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ToDoItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_ToDoItems_AspNetUsers_CreatedById",
+                        column: x => x.CreatedById,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_ToDoItems_AspNetUsers_StatusChangedById",
+                        column: x => x.StatusChangedById,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                });
 
             migrationBuilder.CreateTable(
                 name: "ApplicationUserToDoItem",
@@ -91,6 +99,16 @@ namespace Local.Web.Migrations
                 name: "IX_ApplicationUserToDoItem1_VisibleForId",
                 table: "ApplicationUserToDoItem1",
                 column: "VisibleForId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ToDoItems_CreatedById",
+                table: "ToDoItems",
+                column: "CreatedById");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ToDoItems_StatusChangedById",
+                table: "ToDoItems",
+                column: "StatusChangedById");
         }
 
         /// <inheritdoc />
@@ -102,41 +120,8 @@ namespace Local.Web.Migrations
             migrationBuilder.DropTable(
                 name: "ApplicationUserToDoItem1");
 
-            migrationBuilder.AddColumn<int>(
-                name: "ToDoItemId",
-                table: "AspNetUsers",
-                type: "int",
-                nullable: true);
-
-            migrationBuilder.AddColumn<int>(
-                name: "ToDoItemId1",
-                table: "AspNetUsers",
-                type: "int",
-                nullable: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_ToDoItemId",
-                table: "AspNetUsers",
-                column: "ToDoItemId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_AspNetUsers_ToDoItemId1",
-                table: "AspNetUsers",
-                column: "ToDoItemId1");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUsers_ToDoItems_ToDoItemId",
-                table: "AspNetUsers",
-                column: "ToDoItemId",
-                principalTable: "ToDoItems",
-                principalColumn: "Id");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_AspNetUsers_ToDoItems_ToDoItemId1",
-                table: "AspNetUsers",
-                column: "ToDoItemId1",
-                principalTable: "ToDoItems",
-                principalColumn: "Id");
+            migrationBuilder.DropTable(
+                name: "ToDoItems");
         }
     }
 }

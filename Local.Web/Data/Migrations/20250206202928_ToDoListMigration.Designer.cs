@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Local.Web.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250204204528_ToDoMigration")]
-    partial class ToDoMigration
+    [Migration("20250206202928_ToDoListMigration")]
+    partial class ToDoListMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
