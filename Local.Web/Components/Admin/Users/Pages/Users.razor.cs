@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
+using System.Linq.Expressions;
 using ApplicationUserExpression =
     System.Linq.Expressions.Expression<System.Func<Local.Web.Data.ApplicationUser, bool>>;
 
@@ -51,15 +52,15 @@ namespace Local.Web.Components.Admin.Users.Pages
                     _ => throw new NotImplementedException()
                 });
 
-            var userQuery = userRepository.GetAll(
-                filters,
-                u => EF.Property<string>(u, currentSortColumn),
-                sortDirection
-            );
+            Expression<Func<ApplicationUser, string?>> sort = u => EF.Property<string>(u, currentSortColumn);
 
-            totalCount = await userQuery.CountAsync();
+            var query = filters.Count() > 0 ?
+                userRepository.GetAll(filters, sort, sortDirection) :
+                userRepository.GetAll(sort, sortDirection);
+
+            totalCount = await query.CountAsync();
             currentPage = pageNumber;
-            users = await userQuery.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
+            users = await query.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
         }
 
         private void NavigateToCreateUser() =>

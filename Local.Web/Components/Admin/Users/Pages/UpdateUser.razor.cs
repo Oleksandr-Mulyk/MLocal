@@ -43,7 +43,11 @@ namespace Local.Web.Components.Admin.Users.Pages
 
                 var password = string.IsNullOrEmpty(userViewModel.Password) ? null : userViewModel.Password;
 
-                await userRepository.UpdateAsync(user, password);
+                _ = await (
+                    userViewModel.Password is null ?
+                    userRepository.UpdateAsync(user) :
+                    userRepository.UpdateAsync(user, userViewModel.Password)
+                    );
                 messageManager.AddMessage(new Message("User updated successfully!", MessageType.Success));
 
                 navigationManager.NavigateTo(AdminUserRoute.USER_LIST_PAGE, true);

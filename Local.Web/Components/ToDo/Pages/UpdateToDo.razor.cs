@@ -12,7 +12,7 @@ namespace Local.Web.Components.ToDo.Pages
     [Route(ToDoRoute.UPDATE_TODO_PAGE)]
     [Authorize]
     public partial class UpdateToDo(
-        IToDoRepository toDoRepository,
+        IRepository<IToDoItem> toDoRepository,
         IUserRepository userRepository,
         NavigationManager navigationManager,
         IMessageManager messageManager,

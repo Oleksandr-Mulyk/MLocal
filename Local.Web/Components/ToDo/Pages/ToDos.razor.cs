@@ -1,8 +1,10 @@
-﻿using Local.Web.Data.ToDo;
+﻿using Local.Web.Data;
+using Local.Web.Data.ToDo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
+using System.Linq.Expressions;
 using ToDoExpression =
     System.Linq.Expressions.Expression<System.Func<Local.Web.Data.ToDo.IToDoItem, bool>>;
 
@@ -10,7 +12,7 @@ namespace Local.Web.Components.ToDo.Pages
 {
     [Route(ToDoRoute.TODO_LIST_PAGE)]
     [Authorize]
-    public partial class ToDos(IToDoRepository toDoRepository, NavigationManager navigationManager)
+    public partial class ToDos(IRepository<IToDoItem> toDoRepository, NavigationManager navigationManager)
     {
         private const string TITLE_COLUMN_NAME = "Title";
 
@@ -90,15 +92,15 @@ namespace Local.Web.Components.ToDo.Pages
                     })
                 );
 
-            var toDoListQuery = toDoRepository.GetAll(
-                filters,
-                t => EF.Property<string>(t, currentSortColumn),
-                sortDirection
-            );
+            Expression<Func<IToDoItem, string?>> sort = u => EF.Property<string>(u, currentSortColumn);
 
-            totalCount = await toDoListQuery.CountAsync();
+            var query = filters.Count() > 0 ?
+                toDoRepository.GetAll(filters, sort, sortDirection) :
+                toDoRepository.GetAll(sort, sortDirection);
+
+            totalCount = await query.CountAsync();
             currentPage = pageNumber;
-            toDoList = await toDoListQuery.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
+            toDoList = await query.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
         }
 
         private void NavigateToCreateToDo() =>

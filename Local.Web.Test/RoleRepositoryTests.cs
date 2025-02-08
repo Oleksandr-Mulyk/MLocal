@@ -1,4 +1,5 @@
-﻿using Local.Web.Data.User;
+﻿// @TODO this tests don't work anymore, need to be updated
+using Local.Web.Data.User;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using Moq;

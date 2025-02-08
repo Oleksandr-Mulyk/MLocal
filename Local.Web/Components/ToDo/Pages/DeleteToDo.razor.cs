@@ -1,4 +1,5 @@
 ﻿using Local.Web.Components.Layout.Alerts;
+using Local.Web.Data;
 using Local.Web.Data.ToDo;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
@@ -8,7 +9,7 @@ namespace Local.Web.Components.ToDo.Pages
     [Route(ToDoRoute.DELETE_TODO_PAGE)]
     [Authorize]
     public partial class DeleteToDo(
-        IToDoRepository toDoRepository,
+        IRepository<IToDoItem> toDoRepository,
         NavigationManager navigationManager,
         IMessageManager messageManager
         )

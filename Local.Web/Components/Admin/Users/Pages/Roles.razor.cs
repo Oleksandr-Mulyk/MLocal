@@ -1,9 +1,10 @@
-﻿using Local.Web.Data.User;
+﻿using Local.Web.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel;
+using System.Linq.Expressions;
 using IdentityRoleExpression =
     System.Linq.Expressions.Expression<System.Func<Microsoft.AspNetCore.Identity.IdentityRole, bool>>;
 
@@ -11,7 +12,7 @@ namespace Local.Web.Components.Admin.Users.Pages
 {
     [Route(AdminUserRoute.ROLE_LIST_PAGE)]
     [Authorize]
-    public partial class Roles(IRoleRepository roleRepository, NavigationManager navigationManager)
+    public partial class Roles(IRepository<IdentityRole, string> roleRepository, NavigationManager navigationManager)
     {
         private const string NAME_COLUMN_NAME = "Name";
 
@@ -46,15 +47,15 @@ namespace Local.Web.Components.Admin.Users.Pages
                     _ => throw new NotImplementedException()
                 });
 
-            var roleQuery = roleRepository.GetAll(
-                filters,
-                u => EF.Property<string>(u, currentSortColumn),
-                sortDirection
-            );
+            Expression<Func<IdentityRole, string?>> sort = u => EF.Property<string>(u, currentSortColumn);
 
-            totalCount = await roleQuery.CountAsync();
+            var query = filters.Count() > 0 ?
+                roleRepository.GetAll(filters, sort, sortDirection) :
+                roleRepository.GetAll(sort, sortDirection);
+
+            totalCount = await query.CountAsync();
             currentPage = pageNumber;
-            roles = await roleQuery.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
+            roles = await query.Skip((pageNumber - 1) * itemsPerPage).Take(itemsPerPage).ToListAsync();
         }
 
         private void NavigateToCreateRole() =>

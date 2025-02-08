@@ -4,30 +4,25 @@ using System.Linq.Expressions;
 
 namespace Local.Web.Data.User
 {
-    public class RoleRepository(RoleManager<IdentityRole> roleManager) : IRoleRepository
+    public class RoleRepository(RoleManager<IdentityRole> roleManager) : IRepository<IdentityRole, string>
     {
+        public IQueryable<IdentityRole> GetAll() => roleManager.Roles;
+
+        public IQueryable<IdentityRole> GetAll(IEnumerable<Expression<Func<IdentityRole, bool>>> filterExpressions) =>
+            filterExpressions.Aggregate(roleManager.Roles, (current, filter) => current.Where(filter));
+
         public IQueryable<IdentityRole> GetAll(
-            IEnumerable<Expression<Func<IdentityRole, bool>>>? filterExpressions = null,
-            Expression<Func<IdentityRole, string?>>? sortExpression = null,
+            Expression<Func<IdentityRole, string?>> sortExpression,
             ListSortDirection sortDirection = ListSortDirection.Ascending
-            )
-        {
-            var roles = roleManager.Roles;
+            ) =>
+            ApplySort(GetAll(), sortExpression, sortDirection);
 
-            if (filterExpressions is not null)
-            {
-                roles = filterExpressions.Aggregate(roles, (current, filter) => current.Where(filter));
-            }
-
-            if (sortExpression is not null)
-            {
-                roles = sortDirection == ListSortDirection.Ascending ?
-                    roles.OrderBy(sortExpression) :
-                    roles.OrderByDescending(sortExpression);
-            }
-
-            return roles;
-        }
+        public IQueryable<IdentityRole> GetAll(
+            IEnumerable<Expression<Func<IdentityRole, bool>>>? filterExpressions,
+            Expression<Func<IdentityRole, string?>>? sortExpression,
+            ListSortDirection sortDirection = ListSortDirection.Ascending
+            ) =>
+            ApplySort(GetAll(filterExpressions), sortExpression, sortDirection);
 
         public async Task<IdentityRole> GetByIdAsync(string id) =>
             await roleManager.FindByIdAsync(id) ??
@@ -56,5 +51,14 @@ namespace Local.Web.Data.User
             if (!result.Succeeded)
                 throw new Exception(string.Join(", ", result.Errors.Select(e => e.Description)));
         }
+
+        private static IQueryable<IdentityRole> ApplySort(
+            IQueryable<IdentityRole> query,
+            Expression<Func<IdentityRole, string?>> sortExpression,
+            ListSortDirection sortDirection
+            ) =>
+            sortDirection == ListSortDirection.Ascending ?
+                query.OrderBy(sortExpression) :
+                query.OrderByDescending(sortExpression);
     }
 }

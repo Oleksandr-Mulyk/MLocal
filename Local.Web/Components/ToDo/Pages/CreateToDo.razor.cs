@@ -12,7 +12,7 @@ namespace Local.Web.Components.ToDo.Pages
     [Route(ToDoRoute.CREATE_TODO_PAGE)]
     [Authorize]
     public partial class CreateToDo(
-        IToDoRepository toDoRepository,
+        IRepository<IToDoItem> toDoRepository,
         IUserRepository userRepository,
         NavigationManager navigationManager,
         IMessageManager messageManager,

@@ -1,5 +1,5 @@
 ﻿using Local.Web.Components.Layout.Alerts;
-using Local.Web.Data.User;
+using Local.Web.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Identity;
@@ -9,7 +9,7 @@ namespace Local.Web.Components.Admin.Users.Pages
     [Route(AdminUserRoute.DELETE_ROLE_PAGE)]
     [Authorize]
     public partial class DeleteRole(
-        IRoleRepository roleRepository,
+        IRepository<IdentityRole, string> roleRepository,
         NavigationManager navigationManager,
         IMessageManager messageManager
         )

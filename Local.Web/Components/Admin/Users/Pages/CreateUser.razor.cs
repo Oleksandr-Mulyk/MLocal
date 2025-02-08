@@ -27,7 +27,11 @@ namespace Local.Web.Components.Admin.Users.Pages
                     Email = userViewModel.Email,
                     EmailConfirmed = true
                 };
-                var result = await userRepository.CreateAsync(newUser, userViewModel.Password ?? string.Empty);
+                _= await (
+                    userViewModel.Password is null ?
+                    userRepository.CreateAsync(newUser) :
+                    userRepository.CreateAsync(newUser, userViewModel.Password)
+                    );
                 messageManager.AddMessage(new("User created successfully!", MessageType.Success));
                 navigationManager.NavigateTo(AdminUserRoute.USER_LIST_PAGE, true);
             }

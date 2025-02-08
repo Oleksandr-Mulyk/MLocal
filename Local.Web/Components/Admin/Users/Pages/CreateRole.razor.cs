@@ -1,6 +1,6 @@
 ﻿using Local.Web.Components.Admin.Users.Pages.ViewModel;
 using Local.Web.Components.Layout.Alerts;
-using Local.Web.Data.User;
+using Local.Web.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Identity;
@@ -10,7 +10,7 @@ namespace Local.Web.Components.Admin.Users.Pages
     [Route(AdminUserRoute.CREATE_ROLE_PAGE)]
     [Authorize]
     public partial class CreateRole(
-        IRoleRepository roleRepository,
+        IRepository<IdentityRole, string> roleRepository,
         NavigationManager navigationManager,
         IMessageManager messageManager
         )
