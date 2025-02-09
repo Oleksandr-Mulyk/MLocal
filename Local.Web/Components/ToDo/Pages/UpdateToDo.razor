@@ -8,65 +8,32 @@
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <div class="mb-3">
-        <label for="title" class="form-label">Title</label>
-        <InputText id="title" class="form-control" @bind-Value="toDoViewModel.Title" />
-        <ValidationMessage For="@(() => toDoViewModel.Title)" />
-    </div>
+    <PInputText OuterClass="mb-3" Label="Title" id="title" @bind-Value="toDoViewModel.Title" />
 
-    <div class="mb-3">
-        <label for="status" class="form-label">Status</label>
-        <InputSelect id="status" class="form-control" @bind-Value="toDoViewModel.Status">
-            @foreach (var status in statuses)
-            {
-                <option value="@status">@status</option>
-            }
-        </InputSelect>
-        <ValidationMessage For="@(() => toDoViewModel.Status)" />
-        @if (toDoViewModel.StatusChanged is not null && toDoViewModel.StatusChangedBy is not null)
+    <PInputSelect OuterClass="mb-3" Label="Stalus" id="status" @bind-Value="toDoViewModel.Status" Comment="@GetStatusComment()">
+        @foreach (var status in statuses)
         {
-            <small class="text-muted">
-                Status changed at @toDoViewModel.StatusChanged by @toDoViewModel.StatusChangedBy
-            </small>
+            <option value="@status">@status</option>
         }
-    </div>
+    </PInputSelect>
 
-    <div class="mb-3">
-        <label for="description" class="form-label">Description</label>
-        <InputTextArea id="description" class="form-control" @bind-Value="toDoViewModel.Description" />
-        <ValidationMessage For="@(() => toDoViewModel.Description)" />
-    </div>
+    <PInputTextArea OuterClass="mb-3" Label="Description" id="description" @bind-Value="toDoViewModel.Description" />
 
-    <div class="mb-3">
-        <label for="deathLine" class="form-label">Death Line</label>
-        <InputDate
-            Type="InputDateType.DateTimeLocal"
-            id="deathLine"
-            class="form-control"
-            @bind-Value="toDoViewModel.DeathLine" />
-        <ValidationMessage For="@(() => toDoViewModel.DeathLine)" />
-    </div>
+    <PInputDate Type="InputDateType.DateTimeLocal" OuterClass="mb-3" Label="Death Line" id="deathLine"
+                @bind-Value="toDoViewModel.DeathLine" />
 
-    <div class="mb-3">
-        <label for="assignedTo" class="form-label">Assigned To</label>
-        <InputSelect multiple id="assignedTo" class="form-control" @bind-Value="toDoViewModel.AssignedTo">
-            @foreach (var user in users)
-            {
-                <option value="@user.Id">@(user.UserName ?? user.Email)</option>
-            }
-        </InputSelect>
-        <ValidationMessage For="@(() => toDoViewModel.AssignedTo)" />
-    </div>
+    <PInputSelect OuterClass="mb-3" Label="Assigned To" id="assignedTo" @bind-Value="toDoViewModel.AssignedTo">
+        @foreach (var user in users)
+        {
+            <option value="@user.Id">@(user.UserName ?? user.Email)</option>
+        }
+    </PInputSelect>
 
-    <div class="mb-3">
-        <label for="visibleFor" class="form-label">Visible For</label>
-        <InputSelect multiple id="visibleFor" class="form-control" @bind-Value="toDoViewModel.VisibleFor">
-            @foreach (var user in users)
-            {
-                <option value="@user.Id">@(user.UserName ?? user.Email)</option>
-            }
-        </InputSelect>
-        <ValidationMessage For="@(() => toDoViewModel.VisibleFor)" />
-    </div>
+    <PInputSelect OuterClass="mb-3" Label="Visible For" id="visibleFor" @bind-Value="toDoViewModel.VisibleFor">
+        @foreach (var user in users)
+        {
+            <option value="@user.Id">@(user.UserName ?? user.Email)</option>
+        }
+    </PInputSelect>
     <button type="submit" class="btn btn-primary">Save</button>
 </EditForm>

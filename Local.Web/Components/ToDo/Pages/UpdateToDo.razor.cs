@@ -82,5 +82,10 @@ namespace Local.Web.Components.ToDo.Pages
                 );
             }
         }
+
+        private string? GetStatusComment() =>
+            toDoViewModel.StatusChanged is not null && toDoViewModel.StatusChangedBy is not null ?
+            $"Status changed at {toDoViewModel.StatusChanged} by {toDoViewModel.StatusChangedBy}" :
+            null;
     }
 }

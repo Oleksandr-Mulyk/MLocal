@@ -29,8 +29,7 @@ namespace Local.Web.Components.Admin.Users.Pages
 
             userViewModel = new UserViewModel
             {
-                UserName = user.UserName!,
-                Email = user.Email
+                Email = user.Email ?? user.UserName
             };
         }
 
@@ -38,7 +37,7 @@ namespace Local.Web.Components.Admin.Users.Pages
         {
             try
             {
-                user.UserName = userViewModel.UserName;
+                user.UserName = userViewModel.Email;
                 user.Email = userViewModel.Email;
 
                 var password = string.IsNullOrEmpty(userViewModel.Password) ? null : userViewModel.Password;

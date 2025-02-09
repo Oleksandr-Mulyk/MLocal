@@ -23,7 +23,7 @@ namespace Local.Web.Components.Admin.Users.Pages
             {
                 ApplicationUser newUser = new()
                 {
-                    UserName = userViewModel.UserName,
+                    UserName = userViewModel.Email,
                     Email = userViewModel.Email,
                     EmailConfirmed = true
                 };

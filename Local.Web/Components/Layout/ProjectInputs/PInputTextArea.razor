@@ -1,0 +1,14 @@
+﻿@inherits InputTextArea
+
+<div class="@OuterClass">
+    @if (Label != null)
+    {
+        <label class="form-label @(LabelClass)">@Label</label>
+    }
+    @base.BuildRenderTree
+    <ValidationMessage For="() => Value" class="text-danger" />
+    @if (Comment != null)
+    {
+        <p><small class="form-text text-muted @(CommentClass)">@Comment</small></p>
+    }
+</div>

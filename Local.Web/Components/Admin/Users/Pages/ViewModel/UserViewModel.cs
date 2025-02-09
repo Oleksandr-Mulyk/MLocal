@@ -4,10 +4,6 @@ namespace Local.Web.Components.Admin.Users.Pages.ViewModel
 {
     public class UserViewModel
     {
-        [Required]
-        [Display(Name = "Username")]
-        public string UserName { get; set; } = string.Empty;
-
         [EmailAddress]
         [Display(Name = "Email")]
         public string? Email { get; set; }

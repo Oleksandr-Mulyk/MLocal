@@ -5,22 +5,10 @@
 <EditForm Model="userViewModel" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
+    
+    <PInputText OuterClass="mb-3" Label="Email" id="email" @bind-Value="userViewModel.Email" />
 
-    <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <InputText id="username" class="form-control" @bind-Value="userViewModel.UserName" />
-        <ValidationMessage For="@(() => userViewModel.UserName)" />
-    </div>
-    <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <InputText id="email" class="form-control" @bind-Value="userViewModel.Email" />
-        <ValidationMessage For="@(() => userViewModel.Email)" />
-    </div>
-    <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <InputText id="password" type="password" class="form-control" @bind-Value="userViewModel.Password" />
-        <ValidationMessage For="@(() => userViewModel.Password)" />
-    </div>
+    <PInputText OuterClass="mb-3" Label="Password" type="password" id="password" @bind-Value="userViewModel.Password" />
 
     <button type="submit" class="btn btn-primary">Create</button>
 </EditForm>
