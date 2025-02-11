@@ -1,9 +1,7 @@
 ﻿@page "/"
-@inject IStringLocalizer<SharedResource> Loc
+
 @attribute [Authorize]
 
-<PageTitle>Home</PageTitle>
+<PageTitle>@Loc["Home Page"]</PageTitle>
 
 <h1>@Loc["Hello, world!"]</h1>
-
-Welcome to our new app.

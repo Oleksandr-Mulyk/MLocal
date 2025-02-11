@@ -120,4 +120,19 @@
   <data name="Hello, world!" xml:space="preserve">
     <value>Cześć, świat!</value>
   </data>
+  <data name="Home Page" xml:space="preserve">
+    <value>Główna</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Zaloguj się</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Wyloguj się</value>
+  </data>
+  <data name="Register" xml:space="preserve">
+    <value>Zarejestruj się</value>
+  </data>
+  <data name="ToDo" xml:space="preserve">
+    <value>Do zrobienia</value>
+  </data>
 </root>
