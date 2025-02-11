@@ -1,0 +1,8 @@
+﻿<div class="col-md-3">
+    <select class="form-control form-select" @bind="selectedCulture" @bind:after="ApplySelectedCultureAsync">
+        @foreach (var culture in supportedCultures)
+        {
+            <option value="@culture">@culture.DisplayName</option>
+        }
+    </select>
+</div>

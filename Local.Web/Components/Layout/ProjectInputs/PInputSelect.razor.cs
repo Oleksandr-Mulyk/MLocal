@@ -19,7 +19,7 @@ namespace Local.Web.Components.Layout.ProjectInputs
         [Parameter]
         public string? CommentClass { get; set; }
 
-        private readonly string? additionalClass = " form-control select";
+        private readonly string? additionalClass = " form-control form-select";
 
         protected override void OnParametersSet()
         {
