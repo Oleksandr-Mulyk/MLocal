@@ -9,9 +9,9 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject IdentityRedirectManager RedirectManager
 
-<PageTitle>Confirm email change</PageTitle>
+<PageTitle>@Loc["Confirm email change"]</PageTitle>
 
-<h1>Confirm email change</h1>
+<h1>@Loc["Confirm email change"]</h1>
 
 <StatusMessage Message="@message" />
 
@@ -35,13 +35,13 @@
         if (UserId is null || Email is null || Code is null)
         {
             RedirectManager.RedirectToWithStatus(
-                "Account/Login", "Error: Invalid email change confirmation link.", HttpContext);
+                "Account/Login", Loc["Error: Invalid email change confirmation link."], HttpContext);
         }
 
         var user = await UserManager.FindByIdAsync(UserId);
         if (user is null)
         {
-            message = "Unable to find user with Id '{userId}'";
+            message = Loc["Unable to find user with Id '{userId}'"];
             return;
         }
 
@@ -49,7 +49,7 @@
         var result = await UserManager.ChangeEmailAsync(user, Email, code);
         if (!result.Succeeded)
         {
-            message = "Error changing email.";
+            message = Loc["Error changing email."];
             return;
         }
 
@@ -58,7 +58,7 @@
         var setUserNameResult = await UserManager.SetUserNameAsync(user, Email);
         if (!setUserNameResult.Succeeded)
         {
-            message = "Error changing user name.";
+            message = Loc["Error changing user name."];
             return;
         }
 

@@ -117,11 +117,92 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Access denied" xml:space="preserve">
+    <value>Доступ заборонено</value>
+  </data>
+  <data name="Authenticator code" xml:space="preserve">
+    <value>Код автентифікатора</value>
+  </data>
+  <data name="Click here to confirm your account" xml:space="preserve">
+    <value>Натисніть тут, щоб підтвердити свій обліковий запис</value>
+  </data>
+  <data name="click here to log in" xml:space="preserve">
+    <value>натисніть тут, щоб увійти</value>
+  </data>
+  <data name="Confirm email" xml:space="preserve">
+    <value>Підтвердити e-mail</value>
+  </data>
+  <data name="Confirm email change" xml:space="preserve">
+    <value>Підтвердити зміну  e-mail</value>
+  </data>
+  <data name="Confirm Password" xml:space="preserve">
+    <value>Підтвердьте пароль</value>
+  </data>
+  <data name="Create a new account." xml:space="preserve">
+    <value>Створіть новий обліковий запис.</value>
+  </data>
+  <data name="Don't have access to your authenticator device? You can" xml:space="preserve">
+    <value>Немає доступу до пристрою автентифікації? Ви можете</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Enter your email." xml:space="preserve">
+    <value>Введіть e-mail</value>
+  </data>
+  <data name="Error changing email." xml:space="preserve">
+    <value>Помилка зміни електронної пошти.</value>
+  </data>
+  <data name="Error changing user name." xml:space="preserve">
+    <value>Помилка зміни імені користувача.</value>
+  </data>
+  <data name="Error confirming your email." xml:space="preserve">
+    <value>Помилка підтвердження електронної e-mail.</value>
+  </data>
+  <data name="Error finding user for unspecified email" xml:space="preserve">
+    <value>Помилка пошуку користувача для невказаної електронної пошти</value>
+  </data>
+  <data name="Error loading user with ID" xml:space="preserve">
+    <value>Помилка завантаження користувача з ID</value>
+  </data>
+  <data name="Error: Invalid authenticator code." xml:space="preserve">
+    <value>Помилка: недійсний код автентифікатора.</value>
+  </data>
+  <data name="Error: Invalid email change confirmation link." xml:space="preserve">
+    <value>Помилка: недійсне посилання для підтвердження зміни електронної пошти.</value>
+  </data>
+  <data name="Error: Invalid login attempt." xml:space="preserve">
+    <value>Помилка: недійсна спроба входу.</value>
+  </data>
+  <data name="Error: Invalid recovery code entered." xml:space="preserve">
+    <value>Помилка: введено недійсний код відновлення.</value>
+  </data>
+  <data name="Forgot password confirmation" xml:space="preserve">
+    <value>Підтвердити зміну пароля</value>
+  </data>
+  <data name="Forgot your password?" xml:space="preserve">
+    <value>Забули пароль?</value>
+  </data>
   <data name="Hello, world!" xml:space="preserve">
     <value>Привіт, світ!</value>
   </data>
   <data name="Home Page" xml:space="preserve">
     <value>Головна</value>
+  </data>
+  <data name="Invalid password reset" xml:space="preserve">
+    <value>Неуспішне скидання пароля</value>
+  </data>
+  <data name="Invalid user" xml:space="preserve">
+    <value>Недійсний користувач</value>
+  </data>
+  <data name="Locked out" xml:space="preserve">
+    <value>Заблоковано</value>
+  </data>
+  <data name="Log in" xml:space="preserve">
+    <value>Ввійти</value>
+  </data>
+  <data name="log in with a recovery code" xml:space="preserve">
+    <value>увійти за допомогою коду відновлення</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Ввійти</value>
@@ -129,10 +210,94 @@
   <data name="Logout" xml:space="preserve">
     <value>Вийти</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="Please check your email to confirm your account." xml:space="preserve">
+    <value>Перевірте свою електронну пошту, щоб підтвердити обліковий запис.</value>
+  </data>
+  <data name="Please check your email to reset your password." xml:space="preserve">
+    <value>Перевірте свою електронну пошту, щоб змінити пароль.</value>
+  </data>
+  <data name="Recovery Code" xml:space="preserve">
+    <value>Код відновлення</value>
+  </data>
+  <data name="Recovery code verification" xml:space="preserve">
+    <value>Перевірка коду відновлення</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Зареєструватися</value>
   </data>
+  <data name="Register as a new user" xml:space="preserve">
+    <value>Зареєструватися як новий користувач</value>
+  </data>
+  <data name="Register confirmation" xml:space="preserve">
+    <value>Підтвердження реєстрації</value>
+  </data>
+  <data name="Remember me" xml:space="preserve">
+    <value>Запам'ятати мене</value>
+  </data>
+  <data name="Remember this machine" xml:space="preserve">
+    <value>Запам'ятати цей пристрій</value>
+  </data>
+  <data name="Resend" xml:space="preserve">
+    <value>Надіслати повторно</value>
+  </data>
+  <data name="Resend email confirmation" xml:space="preserve">
+    <value>Повторно надіслати підтвердження e-mail</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Скинути</value>
+  </data>
+  <data name="Reset password" xml:space="preserve">
+    <value>Скинути пароль</value>
+  </data>
+  <data name="Reset password confirmation" xml:space="preserve">
+    <value>Підтвердження скидання пароля</value>
+  </data>
+  <data name="Reset your password." xml:space="preserve">
+    <value>Скинути свій пароль</value>
+  </data>
+  <data name="Thank you for confirming your email change." xml:space="preserve">
+    <value>Дякуємо за підтвердження зміни електронної адреси.</value>
+  </data>
+  <data name="Thank you for confirming your email." xml:space="preserve">
+    <value>Дякуємо за підтвердження e-mail.</value>
+  </data>
+  <data name="The password reset link is invalid." xml:space="preserve">
+    <value>Посилання для зміни пароля недійсне.</value>
+  </data>
+  <data name="This account has been locked out, please try again later." xml:space="preserve">
+    <value>Цей обліковий запис заблоковано, спробуйте пізніше.</value>
+  </data>
   <data name="ToDo" xml:space="preserve">
     <value>Завдання</value>
+  </data>
+  <data name="Two-factor authentication" xml:space="preserve">
+    <value>Двофакторна аутентифікація</value>
+  </data>
+  <data name="Unable to find user with Id '{userId}'" xml:space="preserve">
+    <value>Не вдалося знайти користувача з ідентифікатором "{userId}"</value>
+  </data>
+  <data name="Unable to load two-factor authentication user." xml:space="preserve">
+    <value>Неможливо завантажити користувача двофакторної автентифікації.</value>
+  </data>
+  <data name="Use a local account to log in." xml:space="preserve">
+    <value>Використовуйте локальний обліковий запис для входу.</value>
+  </data>
+  <data name="Verification email sent. Please check your email." xml:space="preserve">
+    <value>Електронний лист для підтвердження надіслано. Будь ласка, перевірте свою електронну пошту.</value>
+  </data>
+  <data name="You do not have access to this resource" xml:space="preserve">
+    <value>Ви не маєте доступу до цього ресурсу</value>
+  </data>
+  <data name="You have requested to log in with a recovery code. This login will not be remembered until you provide an authenticator app code at log in or disable 2FA and log in again." xml:space="preserve">
+    <value>Ви надіслали запит на вхід за допомогою коду відновлення. Цей вхід не буде запам’ятатися, доки ви не введете код програми автентифікації під час входу або не вимкнете 2FA та не ввійдете знову.</value>
+  </data>
+  <data name="Your login is protected with an authenticator app. Enter your authenticator code below." xml:space="preserve">
+    <value>Ваш логін захищено програмою автентифікації. Введіть код автентифікатора нижче.</value>
+  </data>
+  <data name="Your password has been reset. Please " xml:space="preserve">
+    <value>Ваш пароль скинуто. Будь ласка </value>
   </data>
 </root>

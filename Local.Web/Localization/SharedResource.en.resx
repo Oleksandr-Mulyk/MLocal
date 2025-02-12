@@ -117,11 +117,92 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Access denied" xml:space="preserve">
+    <value>Access denied</value>
+  </data>
+  <data name="Authenticator code" xml:space="preserve">
+    <value>Authenticator code</value>
+  </data>
+  <data name="Click here to confirm your account" xml:space="preserve">
+    <value>Click here to confirm your account</value>
+  </data>
+  <data name="click here to log in" xml:space="preserve">
+    <value>click here to log in</value>
+  </data>
+  <data name="Confirm email" xml:space="preserve">
+    <value>Confirm email</value>
+  </data>
+  <data name="Confirm email change" xml:space="preserve">
+    <value>Confirm email change</value>
+  </data>
+  <data name="Confirm Password" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="Create a new account." xml:space="preserve">
+    <value>Create a new account.</value>
+  </data>
+  <data name="Don't have access to your authenticator device? You can" xml:space="preserve">
+    <value>Don't have access to your authenticator device? You can</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Enter your email." xml:space="preserve">
+    <value>Enter your email.</value>
+  </data>
+  <data name="Error changing email." xml:space="preserve">
+    <value>Error changing email.</value>
+  </data>
+  <data name="Error changing user name." xml:space="preserve">
+    <value>Error changing user name.</value>
+  </data>
+  <data name="Error confirming your email." xml:space="preserve">
+    <value>Error confirming your email.</value>
+  </data>
+  <data name="Error finding user for unspecified email" xml:space="preserve">
+    <value>Error finding user for unspecified email</value>
+  </data>
+  <data name="Error loading user with ID" xml:space="preserve">
+    <value>Error loading user with ID</value>
+  </data>
+  <data name="Error: Invalid authenticator code." xml:space="preserve">
+    <value>Error: Invalid authenticator code.</value>
+  </data>
+  <data name="Error: Invalid email change confirmation link." xml:space="preserve">
+    <value>Error: Invalid email change confirmation link.</value>
+  </data>
+  <data name="Error: Invalid login attempt." xml:space="preserve">
+    <value>Error: Invalid login attempt.</value>
+  </data>
+  <data name="Error: Invalid recovery code entered." xml:space="preserve">
+    <value>Error: Invalid recovery code entered.</value>
+  </data>
+  <data name="Forgot password confirmation" xml:space="preserve">
+    <value>Forgot password confirmation</value>
+  </data>
+  <data name="Forgot your password?" xml:space="preserve">
+    <value>Forgot your password?</value>
+  </data>
   <data name="Hello, world!" xml:space="preserve">
     <value>Hello, world!</value>
   </data>
   <data name="Home Page" xml:space="preserve">
     <value>Home</value>
+  </data>
+  <data name="Invalid password reset" xml:space="preserve">
+    <value>Invalid password reset</value>
+  </data>
+  <data name="Invalid user" xml:space="preserve">
+    <value>Invalid user</value>
+  </data>
+  <data name="Locked out" xml:space="preserve">
+    <value>Locked out</value>
+  </data>
+  <data name="Log in" xml:space="preserve">
+    <value>Log in</value>
+  </data>
+  <data name="log in with a recovery code" xml:space="preserve">
+    <value>log in with a recovery code</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Log In</value>
@@ -129,10 +210,94 @@
   <data name="Logout" xml:space="preserve">
     <value>Log out</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Please check your email to confirm your account." xml:space="preserve">
+    <value>Please check your email to confirm your account.</value>
+  </data>
+  <data name="Please check your email to reset your password." xml:space="preserve">
+    <value>Please check your email to reset your password.</value>
+  </data>
+  <data name="Recovery Code" xml:space="preserve">
+    <value>Recovery Code</value>
+  </data>
+  <data name="Recovery code verification" xml:space="preserve">
+    <value>Recovery code verification</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Register</value>
   </data>
+  <data name="Register as a new user" xml:space="preserve">
+    <value>Register as a new user</value>
+  </data>
+  <data name="Register confirmation" xml:space="preserve">
+    <value>Register confirmation</value>
+  </data>
+  <data name="Remember me" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="Remember this machine" xml:space="preserve">
+    <value>Remember this machine</value>
+  </data>
+  <data name="Resend" xml:space="preserve">
+    <value>Resend</value>
+  </data>
+  <data name="Resend email confirmation" xml:space="preserve">
+    <value>Resend email confirmationResend email confirmation</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="Reset password" xml:space="preserve">
+    <value>Reset password</value>
+  </data>
+  <data name="Reset password confirmation" xml:space="preserve">
+    <value>Reset password confirmation</value>
+  </data>
+  <data name="Reset your password." xml:space="preserve">
+    <value>Reset your password.</value>
+  </data>
+  <data name="Thank you for confirming your email change." xml:space="preserve">
+    <value>Thank you for confirming your email change.</value>
+  </data>
+  <data name="Thank you for confirming your email." xml:space="preserve">
+    <value>Thank you for confirming your email.</value>
+  </data>
+  <data name="The password reset link is invalid." xml:space="preserve">
+    <value>The password reset link is invalid.</value>
+  </data>
+  <data name="This account has been locked out, please try again later." xml:space="preserve">
+    <value>This account has been locked out, please try again later.</value>
+  </data>
   <data name="ToDo" xml:space="preserve">
     <value>To do</value>
+  </data>
+  <data name="Two-factor authentication" xml:space="preserve">
+    <value>Two-factor authentication</value>
+  </data>
+  <data name="Unable to find user with Id '{userId}'" xml:space="preserve">
+    <value>Unable to find user with Id '{userId}'</value>
+  </data>
+  <data name="Unable to load two-factor authentication user." xml:space="preserve">
+    <value>Unable to load two-factor authentication user.</value>
+  </data>
+  <data name="Use a local account to log in." xml:space="preserve">
+    <value>Use a local account to log in.</value>
+  </data>
+  <data name="Verification email sent. Please check your email." xml:space="preserve">
+    <value>Verification email sent. Please check your email.</value>
+  </data>
+  <data name="You do not have access to this resource" xml:space="preserve">
+    <value>You do not have access to this resource</value>
+  </data>
+  <data name="You have requested to log in with a recovery code. This login will not be remembered until you provide an authenticator app code at log in or disable 2FA and log in again." xml:space="preserve">
+    <value>You have requested to log in with a recovery code. This login will not be remembered until you provide an authenticator app code at log in or disable 2FA and log in again.</value>
+  </data>
+  <data name="Your login is protected with an authenticator app. Enter your authenticator code below." xml:space="preserve">
+    <value>Your login is protected with an authenticator app. Enter your authenticator code below.</value>
+  </data>
+  <data name="Your password has been reset. Please " xml:space="preserve">
+    <value>Your password has been reset. Please </value>
   </data>
 </root>

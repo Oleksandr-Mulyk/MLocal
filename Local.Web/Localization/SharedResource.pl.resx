@@ -117,11 +117,92 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Access denied" xml:space="preserve">
+    <value>Odmowa dostępu</value>
+  </data>
+  <data name="Authenticator code" xml:space="preserve">
+    <value>Kod uwierzytelniający</value>
+  </data>
+  <data name="Click here to confirm your account" xml:space="preserve">
+    <value>Kliknij tutaj, aby potwierdzić swoje konto</value>
+  </data>
+  <data name="click here to log in" xml:space="preserve">
+    <value>kliknij tutaj, aby się zalogować</value>
+  </data>
+  <data name="Confirm email" xml:space="preserve">
+    <value>Potwierdź e-mail</value>
+  </data>
+  <data name="Confirm email change" xml:space="preserve">
+    <value>Potwierdź zmianę adresu e-mail</value>
+  </data>
+  <data name="Confirm Password" xml:space="preserve">
+    <value>Potwierdź hasło</value>
+  </data>
+  <data name="Create a new account." xml:space="preserve">
+    <value>Utwórz nowe konto.</value>
+  </data>
+  <data name="Don't have access to your authenticator device? You can" xml:space="preserve">
+    <value>Nie masz dostępu do swojego urządzenia uwierzytelniającego? Możesz</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Enter your email." xml:space="preserve">
+    <value>Wpisz swój adres e-mail.</value>
+  </data>
+  <data name="Error changing email." xml:space="preserve">
+    <value>Błąd podczas zmiany adresu e-mail.</value>
+  </data>
+  <data name="Error changing user name." xml:space="preserve">
+    <value>Błąd podczas zmiany nazwy użytkownika.</value>
+  </data>
+  <data name="Error confirming your email." xml:space="preserve">
+    <value>Błąd podczas potwierdzania adresu e-mail.</value>
+  </data>
+  <data name="Error finding user for unspecified email" xml:space="preserve">
+    <value>Błąd podczas wyszukiwania użytkownika dla nieokreślonego adresu e-mail</value>
+  </data>
+  <data name="Error loading user with ID" xml:space="preserve">
+    <value>Błąd ładowania użytkownika z ID</value>
+  </data>
+  <data name="Error: Invalid authenticator code." xml:space="preserve">
+    <value>Błąd: Nieprawidłowy kod uwierzytelniający.</value>
+  </data>
+  <data name="Error: Invalid email change confirmation link." xml:space="preserve">
+    <value>Błąd: Nieprawidłowy link potwierdzający zmianę adresu e-mail.</value>
+  </data>
+  <data name="Error: Invalid login attempt." xml:space="preserve">
+    <value>Błąd: Nieprawidłowa próba logowania.</value>
+  </data>
+  <data name="Error: Invalid recovery code entered." xml:space="preserve">
+    <value>Błąd: Wprowadzono nieprawidłowy kod odzyskiwania.</value>
+  </data>
+  <data name="Forgot password confirmation" xml:space="preserve">
+    <value>Potwierdź zmianę hasła</value>
+  </data>
+  <data name="Forgot your password?" xml:space="preserve">
+    <value>Zapomniałeś hasła?</value>
+  </data>
   <data name="Hello, world!" xml:space="preserve">
     <value>Cześć, świat!</value>
   </data>
   <data name="Home Page" xml:space="preserve">
     <value>Główna</value>
+  </data>
+  <data name="Invalid password reset" xml:space="preserve">
+    <value>Resetowanie hasła nie powiodło się</value>
+  </data>
+  <data name="Invalid user" xml:space="preserve">
+    <value>Nieprawidłowy użytkownik</value>
+  </data>
+  <data name="Locked out" xml:space="preserve">
+    <value>Zablokowany</value>
+  </data>
+  <data name="Log in" xml:space="preserve">
+    <value>Zaloguj się</value>
+  </data>
+  <data name="log in with a recovery code" xml:space="preserve">
+    <value>załogować się za pomocą kodu odzyskiwania</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Zaloguj się</value>
@@ -129,10 +210,95 @@
   <data name="Logout" xml:space="preserve">
     <value>Wyloguj się</value>
   </data>
+  <data name="Password" xml:space="preserve">
+    <value>Hasło</value>
+  </data>
+  <data name="Please check your email to confirm your account." xml:space="preserve">
+    <value>Sprawdź swoją skrzynkę e-mail, aby potwierdzić założenie konta.</value>
+  </data>
+  <data name="Please check your email to reset your password." xml:space="preserve">
+    <value>Sprawdź swoją skrzynkę e-mail, aby zresetować hasło.</value>
+  </data>
+  <data name="Recovery Code" xml:space="preserve">
+    <value>Kod odzyskiwania</value>
+  </data>
+  <data name="Recovery code verification" xml:space="preserve">
+    <value>Weryfikacja kodu odzyskiwania</value>
+  </data>
   <data name="Register" xml:space="preserve">
     <value>Zarejestruj się</value>
   </data>
+  <data name="Register as a new user" xml:space="preserve">
+    <value>Zarejestruj się jako nowy użytkownik</value>
+  </data>
+  <data name="Register confirmation" xml:space="preserve">
+    <value>Potwierdzenie rejestracji</value>
+  </data>
+  <data name="Remember me" xml:space="preserve">
+    <value>Zapamiętaj mnie</value>
+  </data>
+  <data name="Remember this machine" xml:space="preserve">
+    <value>Zapamiętaj to urządzenie</value>
+  </data>
+  <data name="Resend" xml:space="preserve">
+    <value>Wyślij ponownie</value>
+  </data>
+  <data name="Resend email confirmation" xml:space="preserve">
+    <value>Wyślij ponownie potwierdzenie e-mail</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Zrejestruj</value>
+  </data>
+  <data name="Reset password" xml:space="preserve">
+    <value>Zresetuj hasło</value>
+  </data>
+  <data name="Reset password confirmation" xml:space="preserve">
+    <value>Potwierdzenie resetowania hasła</value>
+  </data>
+  <data name="Reset your password." xml:space="preserve">
+    <value>Zresetuj swoje hasło</value>
+  </data>
+  <data name="Thank you for confirming your email change." xml:space="preserve">
+    <value>Dziękujemy za potwierdzenie zmiany adresu e-mail.</value>
+  </data>
+  <data name="Thank you for confirming your email." xml:space="preserve">
+    <value>Dziękujemy za potwierdzenie adresu e-mail.</value>
+  </data>
+  <data name="The password reset link is invalid." xml:space="preserve">
+    <value>Link do resetowania hasła jest nieprawidłowy.</value>
+  </data>
+  <data name="This account has been locked out, please try again later." xml:space="preserve">
+    <value>To konto zostało zablokowane. Spróbuj ponownie później.</value>
+  </data>
   <data name="ToDo" xml:space="preserve">
     <value>Do zrobienia</value>
+  </data>
+  <data name="Two-factor authentication" xml:space="preserve">
+    <value>Uwierzytelnianie dwuskładnikowe</value>
+  </data>
+  <data name="Unable to find user with Id '{userId}'" xml:space="preserve">
+    <value>Nie można znaleźć użytkownika o identyfikatorze '{userId}'</value>
+  </data>
+  <data name="Unable to load two-factor authentication user." xml:space="preserve">
+    <value>Nie można załadować użytkownika uwierzytelniania dwuskładnikowego.</value>
+  </data>
+  <data name="Use a local account to log in." xml:space="preserve">
+    <value>Zaloguj się za pomocą konta lokalnego.</value>
+  </data>
+  <data name="Verification email sent. Please check your email." xml:space="preserve">
+    <value>E-mail weryfikacyjny został wysłany. Sprawdź swoją pocztę.</value>
+  </data>
+  <data name="You do not have access to this resource" xml:space="preserve">
+    <value>Nie masz dostępu do tego zasobu</value>
+  </data>
+  <data name="You have requested to log in with a recovery code. This login will not be remembered until you provide an authenticator app code at log in or disable 2FA and log in again." xml:space="preserve">
+    <value>Poprosiłeś o zalogowanie się za pomocą kodu odzyskiwania. To logowanie nie zostanie zapamiętane, dopóki nie podasz kodu aplikacji uwierzytelniającej podczas logowania lub nie wyłączysz 2FA i nie zalogujesz się ponownie.
+</value>
+  </data>
+  <data name="Your login is protected with an authenticator app. Enter your authenticator code below." xml:space="preserve">
+    <value>Twoje logowanie jest chronione przez aplikację uwierzytelniającą. Wprowadź poniżej swój kod uwierzytelniający.</value>
+  </data>
+  <data name="Your password has been reset. Please " xml:space="preserve">
+    <value>Twoje hasło zostało zresetowane. Proszę </value>
   </data>
 </root>
