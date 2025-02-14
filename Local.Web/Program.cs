@@ -41,6 +41,8 @@ builder.Services.AddLocalization();
 
 builder.Services.AddControllers();
 
+builder.Services.AddBlazorBootstrap();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
