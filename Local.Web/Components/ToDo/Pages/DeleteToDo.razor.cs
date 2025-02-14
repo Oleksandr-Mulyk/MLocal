@@ -28,7 +28,7 @@ namespace Local.Web.Components.ToDo.Pages
             try
             {
                 await toDoRepository.DeleteAsync(toDoItem);
-                messageManager.AddMessage(new Message("ToDo deleted successfully!", MessageType.Success));
+                messageManager.AddMessage(new Message(Loc["ToDo deleted successfully!"], MessageType.Success));
             }
             catch (Exception ex)
             {

@@ -1,9 +1,9 @@
-﻿<PageTitle>Delete ToDo @toDoItem.Title</PageTitle>
+﻿<PageTitle>@Loc["Delete ToDo"] @toDoItem.Title</PageTitle>
 
-<h3>Delete User @toDoItem.Title</h3>
+<h3>@Loc["Delete ToDo"] @toDoItem.Title</h3>
 
 <div>
-    <p>Are you sure you want to delete this ToDo?</p>
-    <button class="btn btn-danger" @onclick="DeleteThisToDo">Delete</button>
-    <button class="btn btn-secondary" @onclick="Cancel">Cancel</button>
+    <p>@Loc["Are you sure you want to delete this ToDo?"]</p>
+    <button class="btn btn-danger" @onclick="DeleteThisToDo">@Loc["Delete"]</button>
+    <button class="btn btn-secondary" @onclick="Cancel">@Loc["Cancel"]</button>
 </div>

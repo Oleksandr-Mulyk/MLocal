@@ -1,10 +1,10 @@
-﻿<PageTitle>ToDo List</PageTitle>
+﻿<PageTitle>@Loc["ToDo List"]</PageTitle>
 
-<h3>ToDo List</h3>
+<h3>@Loc["ToDo List"]</h3>
 
 @if (toDoList == null)
 {
-    <p><em>Loading...</em></p>
+    <p><em>@Loc["Loading..."]</em></p>
 }
 else
 {
@@ -12,22 +12,22 @@ else
         <thead>
             <tr>
                 <th>
-                    <span role="button" @onclick="() => SortBy(TITLE_COLUMN_NAME)">Title</span>
+                    <span role="button" @onclick="() => SortBy(TITLE_COLUMN_NAME)">@Loc["Title"]</span>
                 </th>
                 <th>
-                    <span role="button" @onclick="() => SortBy(STATUS_COLUMN_NAME)">Status</span>
+                    <span role="button" @onclick="() => SortBy(STATUS_COLUMN_NAME)">@Loc["Status"]</span>
                 </th>
                 <th>
-                    <span role="button" @onclick="() => SortBy(CREATED_BY_COLUMN_NAME)">Created by</span>
+                    <span role="button" @onclick="() => SortBy(CREATED_BY_COLUMN_NAME)">@Loc["Created by"]</span>
                 </th>
                 <th>
-                    <span role="button" @onclick="() => SortBy(CREATED_COLUMN_NAME)">Created</span>
+                    <span role="button" @onclick="() => SortBy(CREATED_COLUMN_NAME)">@Loc["Created"]</span>
                 </th>
                 <th>
-                    <span>Assigned To</span>
+                    <span>@Loc["Assigned To"]</span>
                 </th>
                 <th>
-                    <span role="button" @onclick="() => SortBy(DEATHLINE_COLUMN_NAME)">Death Line</span>
+                    <span role="button" @onclick="() => SortBy(DEATHLINE_COLUMN_NAME)">@Loc["Death Line"]</span>
                 </th>
                 <th></th>
             </tr>
@@ -61,7 +61,7 @@ else
                 </th>
                 <th>
                     <div>
-                        <label for="createdFrom" class="form-label">From</label>
+                        <label for="createdFrom" class="form-label">@Loc["From"]</label>
                         <InputDate
                             Type="InputDateType.DateTimeLocal"
                             id="createdFrom"
@@ -70,7 +70,7 @@ else
                             @oninput='(e) => OnDateTimeSearchChanged(CREATED_COLUMN_NAME + "_from", e)' />
                     </div>
                     <div>
-                        <label for="createdTo" class="form-label">To</label>
+                        <label for="createdTo" class="form-label">@Loc["To"]</label>
                         <InputDate
                             Type="InputDateType.DateTimeLocal"
                             id="createdTo"
@@ -88,7 +88,7 @@ else
                 </th>
                 <th>
                     <div>
-                        <label for="deathLineFrom" class="form-label">From</label>
+                        <label for="deathLineFrom" class="form-label">@Loc["From"]</label>
                         <InputDate
                             Type="InputDateType.DateTimeLocal"
                             id="deathLineFrom"
@@ -97,7 +97,7 @@ else
                                    @oninput='(e) => OnDateTimeSearchChanged(DEATHLINE_COLUMN_NAME + "_from", e)' />
                     </div>
                     <div>
-                        <label for="deathLineTo" class="form-label">To</label>
+                        <label for="deathLineTo" class="form-label">@Loc["To"]</label>
                         <InputDate
                             Type="InputDateType.DateTimeLocal"
                             id="deathLineTo"
@@ -128,8 +128,8 @@ else
                     </td>
                     <td>@toDo.DeathLine.ToString()</td>
                     <td>
-                        <button class="btn btn-primary" @onclick="() => NavigateToEditToDo(toDo.Id)">View</button>
-                        <button class="btn btn-danger" @onclick="() => NavigateToDeleteToDo(toDo.Id)">Delete</button>
+                        <button class="btn btn-primary" @onclick="() => NavigateToEditToDo(toDo.Id)">@Loc["View"]</button>
+                        <button class="btn btn-danger" @onclick="() => NavigateToDeleteToDo(toDo.Id)">@Loc["Delete"]</button>
                     </td>
                 </tr>
             }
@@ -138,4 +138,4 @@ else
     <Pagination TotalItems="totalCount" CurrentPage="currentPage" OnPageChanged="LoadPageAsync" />
 }
 
-<button class="btn btn-success" @onclick="NavigateToCreateToDo">Create New ToDo</button>
+<button class="btn btn-success" @onclick="NavigateToCreateToDo">@Loc["Create New ToDo"]</button>

@@ -1,31 +1,31 @@
-﻿<PageTitle>Create ToDo</PageTitle>
+﻿<PageTitle>@Loc["Create ToDo"]</PageTitle>
 
-<h3>Create ToDo</h3>
+<h3>@Loc["Create ToDo"]</h3>
 
 <EditForm Model="toDoViewModel" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <PInputText OuterClass="mb-3" Label="Title" id="title" @bind-Value="toDoViewModel.Title" />
+    <PInputText OuterClass="mb-3" Label='@Loc["Title"]' id="title" @bind-Value="toDoViewModel.Title" />
 
-    <PInputTextArea OuterClass="mb-3" Label="Description" id="description" @bind-Value="toDoViewModel.Description" />
+    <PInputTextArea OuterClass="mb-3" Label='@Loc["Description"]' id="description" @bind-Value="toDoViewModel.Description" />
 
-    <PInputDate Type="InputDateType.DateTimeLocal" OuterClass="mb-3" Label="Death Line" id="deathLine"
+    <PInputDate Type="InputDateType.DateTimeLocal" OuterClass="mb-3" Label='@Loc["Death Line"]' id="deathLine"
                 @bind-Value="toDoViewModel.DeathLine" />
 
-    <PInputSelect OuterClass="mb-3" Label="Assigned To" id="assignedTo" @bind-Value="toDoViewModel.AssignedTo">
+    <PInputSelect OuterClass="mb-3" Label='@Loc["Assigned To"]' id="assignedTo" @bind-Value="toDoViewModel.AssignedTo">
         @foreach (var user in users)
         {
             <option value="@user.Id">@(user.UserName ?? user.Email)</option>
         }
     </PInputSelect>
 
-    <PInputSelect OuterClass="mb-3" Label="Visible For" id="visibleFor" @bind-Value="toDoViewModel.VisibleFor">
+    <PInputSelect OuterClass="mb-3" Label='@Loc["Visible For"]' id="visibleFor" @bind-Value="toDoViewModel.VisibleFor">
         @foreach (var user in users)
         {
             <option value="@user.Id">@(user.UserName ?? user.Email)</option>
         }
     </PInputSelect>
 
-    <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" class="btn btn-primary">@Loc["Create"]</button>
 </EditForm>

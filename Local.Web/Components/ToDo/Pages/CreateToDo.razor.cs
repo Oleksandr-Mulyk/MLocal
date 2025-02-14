@@ -47,7 +47,7 @@ namespace Local.Web.Components.ToDo.Pages
                     VisibleFor = [.. userRepository.GetAll([u => toDoViewModel.VisibleFor.Contains(u.Id)])]
                 };
                 await toDoRepository.CreateAsync(newToDo);
-                messageManager.AddMessage(new("To Do created successfully!", MessageType.Success));
+                messageManager.AddMessage(new(Loc["To Do created successfully!"], MessageType.Success));
                 navigationManager.NavigateTo(ToDoRoute.TODO_LIST_PAGE, true);
             }
             catch (Exception ex)

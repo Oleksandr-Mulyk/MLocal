@@ -70,7 +70,7 @@ namespace Local.Web.Components.ToDo.Pages
                 }
 
                 await toDoRepository.UpdateAsync(toDoItem);
-                messageManager.AddMessage(new Message("ToDo updated successfully!", MessageType.Success));
+                messageManager.AddMessage(new Message(Loc["ToDo updated successfully!"], MessageType.Success));
 
                 navigationManager.NavigateTo(ToDoRoute.TODO_LIST_PAGE, true);
             }
