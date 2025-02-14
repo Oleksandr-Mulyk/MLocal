@@ -10,9 +10,9 @@
 @inject NavigationManager NavigationManager
 @inject IdentityRedirectManager RedirectManager
 
-<PageTitle>Log in</PageTitle>
+<PageTitle>@Loc["Log in"]</PageTitle>
 
-<h1>Log in</h1>
+<h1>@Loc["Log in"]</h1>
 <div class="row">
     <div class="col-lg-6">
         <section>
@@ -28,7 +28,7 @@
                     <ValidationMessage For="() => Input.Email" class="text-danger" />
                 </div>
                 <div class="form-floating mb-3">
-                    <InputText type="password" @bind-Value="Input.Password" id="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder="password" />
+                    <InputText type="password" @bind-Value="Input.Password" id="Input.Password" class="form-control" autocomplete="current-password" aria-required="true" placeholder='@Loc["password"]' />
                     <label for="Input.Password" class="form-label">@Loc["Password"]</label>
                     <ValidationMessage For="() => Input.Password" class="text-danger" />
                 </div>
