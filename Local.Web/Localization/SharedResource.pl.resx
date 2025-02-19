@@ -135,8 +135,14 @@
   <data name="article about setting up this ASP.NET application to support logging in via external services" xml:space="preserve">
     <value>artykuł o konfigurowaniu tej aplikacji ASP.NET w celu obsługi logowania za pomocą usług zewnętrznych</value>
   </data>
+  <data name="Ascending" xml:space="preserve">
+    <value>Przez wzrost</value>
+  </data>
   <data name="Assigned To" xml:space="preserve">
     <value>Przypisany do</value>
+  </data>
+  <data name="Assigned to:" xml:space="preserve">
+    <value>Przypisany do:</value>
   </data>
   <data name="Authenticator app" xml:space="preserve">
     <value>Програма автентифікатора</value>
@@ -204,8 +210,20 @@
   <data name="Created by" xml:space="preserve">
     <value>Stworzone przez</value>
   </data>
+  <data name="Created from" xml:space="preserve">
+    <value>Utworzone z</value>
+  </data>
+  <data name="Created to" xml:space="preserve">
+    <value>Stworzone do</value>
+  </data>
   <data name="Death Line" xml:space="preserve">
     <value>Termin ostateczny</value>
+  </data>
+  <data name="Deathline from" xml:space="preserve">
+    <value>Termin ostateczny z</value>
+  </data>
+  <data name="Deathline to" xml:space="preserve">
+    <value>Termin ostateczny do</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Usuń</value>
@@ -221,6 +239,9 @@
   </data>
   <data name="Deleting this data will permanently remove your account, and this cannot be recovered." xml:space="preserve">
     <value>Usunięcie tych danych spowoduje trwałe usunięcie Twojego konta, którego nie będzie można odzyskać.</value>
+  </data>
+  <data name="Descending" xml:space="preserve">
+    <value>Przez spadek</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Opis</value>
@@ -305,6 +326,9 @@
   </data>
   <data name="External logins" xml:space="preserve">
     <value>Logowania zewnętrzne</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filtry</value>
   </data>
   <data name="Forget this browser" xml:space="preserve">
     <value>Zapomnij tę przeglądarkę</value>
@@ -494,6 +518,9 @@
   </data>
   <data name="Set your password" xml:space="preserve">
     <value>Ustaw swoje hasło</value>
+  </data>
+  <data name="Sort by" xml:space="preserve">
+    <value>Sortuj według</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>

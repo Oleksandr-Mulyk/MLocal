@@ -8,133 +8,102 @@
 }
 else
 {
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>
-                    <span role="button" @onclick="() => SortBy(TITLE_COLUMN_NAME)">@Loc["Title"]</span>
-                </th>
-                <th>
-                    <span role="button" @onclick="() => SortBy(STATUS_COLUMN_NAME)">@Loc["Status"]</span>
-                </th>
-                <th>
-                    <span role="button" @onclick="() => SortBy(CREATED_BY_COLUMN_NAME)">@Loc["Created by"]</span>
-                </th>
-                <th>
-                    <span role="button" @onclick="() => SortBy(CREATED_COLUMN_NAME)">@Loc["Created"]</span>
-                </th>
-                <th>
-                    <span>@Loc["Assigned To"]</span>
-                </th>
-                <th>
-                    <span role="button" @onclick="() => SortBy(DEATHLINE_COLUMN_NAME)">@Loc["Death Line"]</span>
-                </th>
-                <th></th>
-            </tr>
-            <tr>
-                <th>
-                    <InputText
-                        id="searchTitle"
-                        class="form-control"
-                        @bind-Value="@stringSearchValues[TITLE_COLUMN_NAME]"
-                        @oninput="(e) => OnSearchChanged(TITLE_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)" />
-                </th>
-                <th>
-                    <InputSelect
-                        id="searchStatus"
-                        class="form-control"
-                        @bind-Value="@stringSearchValues[STATUS_COLUMN_NAME]"
-                        @oninput="(e) => OnSearchChanged(STATUS_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)">
+    <div class="accordion accordion-flush" id="accordionFilter">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="flushHeading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFilter" aria-expanded="false" aria-controls="flush-collapseOne">
+                    @Loc["Filters"]
+                </button>
+            </h2>
+            <div id="flush-collapseFilter" class="accordion-collapse collapse" aria-labelledby="flushHeading" data-bs-parent="#accordionFilter">
+                <div class="accordion-body row">
+                    <PInputText id="searchTitle" @bind-Value="@stringSearchValues[TITLE_COLUMN_NAME]" OuterClass="col-md-3"
+                                @oninput="(e) => OnSearchChanged(TITLE_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)"
+                                Label='@Loc["Title"]' Validable="false" />
+
+                    <PInputSelect id="searchStatus" @bind-Value="@stringSearchValues[STATUS_COLUMN_NAME]" OuterClass="col-md-3"
+                                  @oninput="(e) => OnSearchChanged(STATUS_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)"
+                                  Label='@Loc["Status"]' Validable="false">
                         <option value="">All</option>
                         @foreach (var status in statuses)
                         {
                             <option value="@status">@status</option>
                         }
-                    </InputSelect>
-                </th>
-                <th>
-                    <InputText
-                        id="searchCreatedBy"
-                        class="form-control"
-                        @bind-Value="@stringSearchValues[CREATED_BY_COLUMN_NAME]"
-                        @oninput="(e) => OnSearchChanged(CREATED_BY_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)" />
-                </th>
-                <th>
-                    <div>
-                        <label for="createdFrom" class="form-label">@Loc["From"]</label>
-                        <InputDate
-                            Type="InputDateType.DateTimeLocal"
-                            id="createdFrom"
-                            class="form-control"
-                            @bind-Value='dateTimeSearchValues[CREATED_COLUMN_NAME + "_from"]'
-                            @oninput='(e) => OnDateTimeSearchChanged(CREATED_COLUMN_NAME + "_from", e)' />
-                    </div>
-                    <div>
-                        <label for="createdTo" class="form-label">@Loc["To"]</label>
-                        <InputDate
-                            Type="InputDateType.DateTimeLocal"
-                            id="createdTo"
-                            class="form-control"
-                            @bind-Value='dateTimeSearchValues[CREATED_COLUMN_NAME + "_to"]'
-                            @oninput='(e) => OnDateTimeSearchChanged(CREATED_COLUMN_NAME + "_to", e)' />
-                    </div>
-                </th>
-                <th>
-                    <InputText
-                        id="searchAssignedTo"
-                        class="form-control"
-                        @bind-Value="@stringSearchValues[ASSIGNED_TO_COLUMN_NAME]"
-                        @oninput="(e) => OnSearchChanged(ASSIGNED_TO_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)" />
-                </th>
-                <th>
-                    <div>
-                        <label for="deathLineFrom" class="form-label">@Loc["From"]</label>
-                        <InputDate
-                            Type="InputDateType.DateTimeLocal"
-                            id="deathLineFrom"
-                            class="form-control"
-                            @bind-Value='dateTimeSearchValues[DEATHLINE_COLUMN_NAME + "_from"]'
-                                   @oninput='(e) => OnDateTimeSearchChanged(DEATHLINE_COLUMN_NAME + "_from", e)' />
-                    </div>
-                    <div>
-                        <label for="deathLineTo" class="form-label">@Loc["To"]</label>
-                        <InputDate
-                            Type="InputDateType.DateTimeLocal"
-                            id="deathLineTo"
-                            class="form-control"
-                            @bind-Value='dateTimeSearchValues[DEATHLINE_COLUMN_NAME + "_to"]'
-                                   @oninput='(e) => OnDateTimeSearchChanged(DEATHLINE_COLUMN_NAME + "_to", e)' />
-                    </div>
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
+                    </PInputSelect>
+
+                    <PInputText id="searchCreatedBy" @bind-Value="@stringSearchValues[CREATED_BY_COLUMN_NAME]" OuterClass="col-md-3"
+                                @oninput="(e) => OnSearchChanged(CREATED_BY_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)"
+                                Label='@Loc["Created by"]' Validable="false" />
+
+                    <PInputDate Type="InputDateType.DateTimeLocal" id="createdFrom" OuterClass="col-md-3"
+                               @bind-Value='dateTimeSearchValues[CREATED_COLUMN_NAME + "_from"]'
+                               @oninput='(e) => OnDateTimeSearchChanged(CREATED_COLUMN_NAME + "_from", e)'
+                               Label='@Loc["Created from"]' Validable="false" />
+
+                    <PInputDate Type="InputDateType.DateTimeLocal" id="createdTo" OuterClass="col-md-3"
+                                @bind-Value='dateTimeSearchValues[CREATED_COLUMN_NAME + "_to"]'
+                                @oninput='(e) => OnDateTimeSearchChanged(CREATED_COLUMN_NAME + "_to", e)'
+                                Label='@Loc["Created to"]' Validable="false" />
+
+                    <PInputText id="searchAssignedTo" @bind-Value="@stringSearchValues[ASSIGNED_TO_COLUMN_NAME]" OuterClass="col-md-3"
+                                @oninput="(e) => OnSearchChanged(ASSIGNED_TO_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)"
+                                Label='@Loc["Assigned to"]' Validable="false" />
+
+                    <PInputDate Type="InputDateType.DateTimeLocal" id="deathLineFrom" OuterClass="col-md-3"
+                                @bind-Value='dateTimeSearchValues[DEATHLINE_COLUMN_NAME + "_from"]'
+                                @oninput='(e) => OnDateTimeSearchChanged(DEATHLINE_COLUMN_NAME + "_from", e)'
+                                Label='@Loc["Deathline from"]' Validable="false" />
+
+                    <PInputDate Type="InputDateType.DateTimeLocal" id="deathLineTo" OuterClass="col-md-3"
+                                @bind-Value='dateTimeSearchValues[DEATHLINE_COLUMN_NAME + "_to"]'
+                                @oninput='(e) => OnDateTimeSearchChanged(DEATHLINE_COLUMN_NAME + "_to", e)'
+                                Label='@Loc["Deathline to"]' Validable="false" />
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <PInputSelect @bind-Value="currentSortColumn" id="currentSortColumn" Label='@Loc["Sort by"]' OuterClass="col-md-4"
+                      @onclick="SortBy" Validable="false">
+            @foreach (var column in sortColumns)
+            {
+                <option value="@column.Key">@Loc[column.Value]</option>
+            }
+        </PInputSelect>
+        <PInputSelect @bind-Value="sortDirection" id="sortDirection" OuterClass="col-md-4" Label=" "
+                      @onclick="SortBy" Validable="false">
+            <option value="Ascending">@Loc["Ascending"]</option>
+            <option value="Descending">@Loc["Descending"]</option>
+        </PInputSelect>
+    </div>
+
+    <div class="row">
             @foreach (var toDo in toDoList)
             {
-                <tr>
-                    <td>@toDo.Title</td>
-                    <td>@toDo.Status.ToString()</td>
-                    <td>@(toDo.CreatedBy.UserName ?? toDo.CreatedBy.Email)</td>
-                    <td>@toDo.Created</td>
-                    <td>
+                <div class="col-md-4">
+                    <h4>@toDo.Title</h4>
+                    <p>@toDo.Status.ToString()</p>
+                    <p>@Loc["Created"] @(toDo.CreatedBy.UserName ?? toDo.CreatedBy.Email) @toDo.Created</p>
+                    <p>
                         @if (toDo.AssignedTo?.Count > 0)
                         {
+                            @Loc["Assigned to:"]<br />
                             @((MarkupString)(toDo.AssignedTo
                             .Select(x => x.UserName ?? x.Email)
                             .Aggregate((x, y) => $"{x}<br/>{y}")
                             ))
                         }
-                    </td>
-                    <td>@toDo.DeathLine.ToString()</td>
-                    <td>
+                    </p>
+                    <p>@toDo.DeathLine.ToString()</p>
+                    <p>
                         <button class="btn btn-primary" @onclick="() => NavigateToEditToDo(toDo.Id)">@Loc["View"]</button>
                         <button class="btn btn-danger" @onclick="() => NavigateToDeleteToDo(toDo.Id)">@Loc["Delete"]</button>
-                    </td>
-                </tr>
+                    </p>
+                </div>
             }
-        </tbody>
-    </table>
+    </div>
     <Pagination TotalItems="totalCount" CurrentPage="currentPage" OnPageChanged="LoadPageAsync" />
 }
 

@@ -135,8 +135,14 @@
   <data name="article about setting up this ASP.NET application to support logging in via external services" xml:space="preserve">
     <value>article about setting up this ASP.NET application to support logging in via external services</value>
   </data>
+  <data name="Ascending" xml:space="preserve">
+    <value>Ascending</value>
+  </data>
   <data name="Assigned To" xml:space="preserve">
     <value>Assigned To</value>
+  </data>
+  <data name="Assigned to:" xml:space="preserve">
+    <value>Assigned to:</value>
   </data>
   <data name="Authenticator app" xml:space="preserve">
     <value>Authenticator app</value>
@@ -204,8 +210,20 @@
   <data name="Created by" xml:space="preserve">
     <value>Created by</value>
   </data>
+  <data name="Created from" xml:space="preserve">
+    <value>Created from</value>
+  </data>
+  <data name="Created to" xml:space="preserve">
+    <value>Created to</value>
+  </data>
   <data name="Death Line" xml:space="preserve">
     <value>Deathline</value>
+  </data>
+  <data name="Deathline from" xml:space="preserve">
+    <value>Deathline from</value>
+  </data>
+  <data name="Deathline to" xml:space="preserve">
+    <value>Deathline to</value>
   </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
@@ -221,6 +239,9 @@
   </data>
   <data name="Deleting this data will permanently remove your account, and this cannot be recovered." xml:space="preserve">
     <value>Deleting this data will permanently remove your account, and this cannot be recovered.</value>
+  </data>
+  <data name="Descending" xml:space="preserve">
+    <value>Descending</value>
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
@@ -305,6 +326,9 @@
   </data>
   <data name="External logins" xml:space="preserve">
     <value>External logins</value>
+  </data>
+  <data name="Filters" xml:space="preserve">
+    <value>Filters</value>
   </data>
   <data name="Forget this browser" xml:space="preserve">
     <value>Forget this browser</value>
@@ -494,6 +518,9 @@
   </data>
   <data name="Set your password" xml:space="preserve">
     <value>Set your password</value>
+  </data>
+  <data name="Sort by" xml:space="preserve">
+    <value>Sort by</value>
   </data>
   <data name="Status" xml:space="preserve">
     <value>Status</value>

@@ -28,7 +28,7 @@ namespace Local.Web.Components.ToDo.Pages
 
         private IList<IToDoItem>? toDoList;
 
-        private readonly int itemsPerPage = 10;
+        private readonly int itemsPerPage = 12;
 
         private int currentPage = 1;
 
@@ -54,6 +54,15 @@ namespace Local.Web.Components.ToDo.Pages
             { CREATED_COLUMN_NAME + "_to", null },
             { DEATHLINE_COLUMN_NAME + "_from", null },
             { DEATHLINE_COLUMN_NAME + "_to", null }
+        };
+
+        private readonly Dictionary<string, string> sortColumns = new()
+        {
+            { TITLE_COLUMN_NAME, "Title" },
+            { STATUS_COLUMN_NAME, "Status" },
+            { CREATED_BY_COLUMN_NAME, "Created by" },
+            { CREATED_COLUMN_NAME, "Created" },
+            { DEATHLINE_COLUMN_NAME, "Death Line" }
         };
 
         protected async override Task OnInitializedAsync() =>
@@ -116,20 +125,8 @@ namespace Local.Web.Components.ToDo.Pages
                 ToDoRoute.DELETE_TODO_PAGE.Replace("{" + ToDoRoute.TODO_ID_PARAM_NAME + "}", toDoId.ToString())
                 );
 
-        private async Task SortBy(string columnName)
+        private async Task SortBy()
         {
-            if (currentSortColumn == columnName)
-            {
-                sortDirection = sortDirection == ListSortDirection.Ascending ?
-                    ListSortDirection.Descending :
-                    ListSortDirection.Ascending;
-            }
-            else
-            {
-                currentSortColumn = columnName;
-                sortDirection = ListSortDirection.Ascending;
-            }
-
             await LoadPageAsync(currentPage);
         }
 

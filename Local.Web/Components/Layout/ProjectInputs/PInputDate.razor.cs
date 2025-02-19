@@ -19,6 +19,9 @@ namespace Local.Web.Components.Layout.ProjectInputs
         [Parameter]
         public string? CommentClass { get; set; }
 
+        [Parameter]
+        public bool Validable { get; set; } = true;
+
         protected override void OnParametersSet()
         {
             var additionalAttributes = new Dictionary<string, object>(AdditionalAttributes);
