@@ -103,7 +103,7 @@ namespace Local.Web.Components.ToDo.Pages
 
             Expression<Func<IToDoItem, string?>> sort = u => EF.Property<string>(u, currentSortColumn);
 
-            var query = filters.Count() > 0 ?
+            var query = filters.Any() ?
                 toDoRepository.GetAll(filters, sort, sortDirection) :
                 toDoRepository.GetAll(sort, sortDirection);
 

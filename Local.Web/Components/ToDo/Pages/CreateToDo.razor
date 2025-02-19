@@ -13,7 +13,7 @@
     <PInputDate Type="InputDateType.DateTimeLocal" OuterClass="mb-3" Label='@Loc["Death Line"]' id="deathLine"
                 @bind-Value="toDoViewModel.DeathLine" />
 
-    <PInputSelect OuterClass="mb-3" Label='@Loc["Assigned To"]' id="assignedTo" @bind-Value="toDoViewModel.AssignedTo">
+    <PInputSelect OuterClass="mb-3" Label='@Loc["Assigned to"]' id="assignedTo" @bind-Value="toDoViewModel.AssignedTo">
         @foreach (var user in users)
         {
             <option value="@user.Id">@(user.UserName ?? user.Email)</option>

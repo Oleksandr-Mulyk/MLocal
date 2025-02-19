@@ -1,7 +1,7 @@
 ﻿<nav aria-label="default-pagination">
   <ul class="pagination">
     <li class="page-item@(IsFirstPage ? " disabled" : "")">
-      <span role="button" class="page-link" tabindex="-1" @onclick="PreviousPage">Previous</span>
+      <span role="button" class="page-link" tabindex="-1" @onclick="PreviousPage">@Loc["Previous"]</span>
     </li>
     @foreach (var pageNumber in Enumerable.Range(1, TotalPages))
     {
@@ -10,7 +10,7 @@
         </li>
     }
     <li class="page-item@(IsLastPage ? " disabled" : "")">
-      <span role="button" class="page-link" @onclick="NextPage">Next</span>
+      <span role="button" class="page-link" @onclick="NextPage">@Loc["Next"]</span>
     </li>
   </ul>
 </nav>

@@ -24,10 +24,10 @@ else
                     <PInputSelect id="searchStatus" @bind-Value="@stringSearchValues[STATUS_COLUMN_NAME]" OuterClass="col-md-3"
                                   @oninput="(e) => OnSearchChanged(STATUS_COLUMN_NAME, e.Value?.ToString() ?? string.Empty)"
                                   Label='@Loc["Status"]' Validable="false">
-                        <option value="">All</option>
+                        <option value="">@Loc["All"]</option>
                         @foreach (var status in statuses)
                         {
-                            <option value="@status">@status</option>
+                            <option value="@status">@Loc[status.ToString()]</option>
                         }
                     </PInputSelect>
 
@@ -84,7 +84,7 @@ else
             {
                 <div class="col-md-4">
                     <h4>@toDo.Title</h4>
-                    <p>@toDo.Status.ToString()</p>
+                    <p>@Loc[toDo.Status.ToString()]</p>
                     <p>@Loc["Created"] @(toDo.CreatedBy.UserName ?? toDo.CreatedBy.Email) @toDo.Created</p>
                     <p>
                         @if (toDo.AssignedTo?.Count > 0)

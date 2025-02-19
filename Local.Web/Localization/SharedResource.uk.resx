@@ -138,7 +138,7 @@
   <data name="Ascending" xml:space="preserve">
     <value>За зростанням</value>
   </data>
-  <data name="Assigned To" xml:space="preserve">
+  <data name="Assigned to" xml:space="preserve">
     <value>Кому призначено</value>
   </data>
   <data name="Assigned to:" xml:space="preserve">
@@ -662,5 +662,41 @@
   </data>
   <data name="Your profile has been updated" xml:space="preserve">
     <value>Ваш профіль оновлено</value>
+  </data>
+  <data name="Assigned_to" xml:space="preserve">
+    <value>Призначено</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Попередня</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Далі</value>
+  </data>
+  <data name="Plane" xml:space="preserve">
+    <value>Заплановано</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Відкрито</value>
+  </data>
+  <data name="InProgress" xml:space="preserve">
+    <value>В роботі</value>
+  </data>
+  <data name="Blocked" xml:space="preserve">
+    <value>Заблоковано</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Готово</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>Затверджено</value>
+  </data>
+  <data name="Canceled" xml:space="preserve">
+    <value>Скасовано</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Зберегти</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Всі</value>
   </data>
 </root>

@@ -138,7 +138,7 @@
   <data name="Ascending" xml:space="preserve">
     <value>Przez wzrost</value>
   </data>
-  <data name="Assigned To" xml:space="preserve">
+  <data name="Assigned to" xml:space="preserve">
     <value>Przypisany do</value>
   </data>
   <data name="Assigned to:" xml:space="preserve">
@@ -663,5 +663,41 @@
   </data>
   <data name="Your profile has been updated" xml:space="preserve">
     <value>Twój profil został zaktualizowany</value>
+  </data>
+  <data name="Assigned_to" xml:space="preserve">
+    <value>Przypisany do</value>
+  </data>
+  <data name="Previous" xml:space="preserve">
+    <value>Poprzednia</value>
+  </data>
+  <data name="Next" xml:space="preserve">
+    <value>Następna</value>
+  </data>
+  <data name="Plane" xml:space="preserve">
+    <value>Zaplanowany</value>
+  </data>
+  <data name="Open" xml:space="preserve">
+    <value>Otwarte</value>
+  </data>
+  <data name="InProgress" xml:space="preserve">
+    <value>W toku</value>
+  </data>
+  <data name="Blocked" xml:space="preserve">
+    <value>Zablokowane</value>
+  </data>
+  <data name="Done" xml:space="preserve">
+    <value>Zrobione</value>
+  </data>
+  <data name="Approved" xml:space="preserve">
+    <value>Zatwierdzony</value>
+  </data>
+  <data name="Canceled" xml:space="preserve">
+    <value>Odwołane</value>
+  </data>
+  <data name="Save" xml:space="preserve">
+    <value>Zapisz</value>
+  </data>
+  <data name="All" xml:space="preserve">
+    <value>Wszystko</value>
   </data>
 </root>
