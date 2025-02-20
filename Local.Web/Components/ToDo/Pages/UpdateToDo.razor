@@ -1,39 +1,34 @@
-﻿@using Local.Web.Data.ToDo
-
-<PageTitle>@Loc["Update ToDo"] @toDoViewModel.Title</PageTitle>
-
-<h3>@Loc["Update ToDo"] @toDoViewModel.Title</h3>
-
-<EditForm Model="toDoViewModel" OnValidSubmit="HandleValidSubmit">
+﻿<EditForm Model="toDoViewModel" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />
     <ValidationSummary />
 
-    <PInputText OuterClass="mb-3" Label='@Loc["Title"]' id="title" @bind-Value="toDoViewModel.Title" />
+    <PInputText OuterClass="mb-3" Label='@Loc["Title"]' id="title" @bind-Value="toDoViewModel.Title" disabled="@isDisabled" />
 
-    <PInputSelect OuterClass="mb-3" Label='@Loc["Status"]' id="status" @bind-Value="toDoViewModel.Status" Comment="@GetStatusComment()">
+    <PInputSelect OuterClass="mb-3" Label='@Loc["Status"]' id="status" @bind-Value="toDoViewModel.Status"
+                  Comment="@GetStatusComment()">
         @foreach (var status in statuses)
         {
             <option value="@status">@Loc[status.ToString()]</option>
         }
     </PInputSelect>
 
-    <PInputTextArea OuterClass="mb-3" Label='@Loc["Description"]' id="description" @bind-Value="toDoViewModel.Description" />
+    <PInputTextArea OuterClass="mb-3" Label='@Loc["Description"]' id="description" @bind-Value="toDoViewModel.Description" disabled="@isDisabled" />
 
     <PInputDate Type="InputDateType.DateTimeLocal" OuterClass="mb-3" Label='@Loc["Death Line"]' id="deathLine"
-                @bind-Value="toDoViewModel.DeathLine" />
+                @bind-Value="toDoViewModel.DeathLine" disabled="@isDisabled" />
 
-    <PInputSelect OuterClass="mb-3" Label='@Loc["Assigned to"]' id="assignedTo" @bind-Value="toDoViewModel.AssignedTo">
+    <PInputSelect OuterClass="mb-3" Label='@Loc["Assigned to"]' id="assignedTo" @bind-Value="toDoViewModel.AssignedTo" disabled="@isDisabled">
         @foreach (var user in users)
         {
             <option value="@user.Id">@(user.UserName ?? user.Email)</option>
         }
     </PInputSelect>
 
-    <PInputSelect OuterClass="mb-3" Label='@Loc["Visible For"]' id="visibleFor" @bind-Value="toDoViewModel.VisibleFor">
+    <PInputSelect OuterClass="mb-3" Label='@Loc["Visible For"]' id="visibleFor" @bind-Value="toDoViewModel.VisibleFor" disabled="@isDisabled">
         @foreach (var user in users)
         {
             <option value="@user.Id">@(user.UserName ?? user.Email)</option>
         }
     </PInputSelect>
-    <button type="submit" class="btn btn-primary">@Loc["Save"]</button>
+    <button type="submit" class="btn btn-primary" disabled="@isDisabled">@Loc["Save"]</button>
 </EditForm>

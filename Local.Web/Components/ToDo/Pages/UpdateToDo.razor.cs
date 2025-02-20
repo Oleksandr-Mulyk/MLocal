@@ -30,10 +30,22 @@ namespace Local.Web.Components.ToDo.Pages
 
         private List<ApplicationUser> users = [];
 
+        private readonly string? currentUserName = httpContextAccessor.HttpContext.User.Identity.Name;
+
+        private bool isDisabled = false;
+
         protected override async Task OnInitializedAsync()
         {
             toDoItem = await toDoRepository.GetByIdAsync(Id) ??
             throw new InvalidOperationException($"ToDo with ID {Id} not found!");
+
+            if (toDoItem.CreatedBy?.UserName != currentUserName &&
+                !toDoItem.AssignedTo.Any(u => u.UserName == currentUserName) &&
+                !toDoItem.VisibleFor.Any(u => u.UserName == currentUserName))
+            {
+                navigationManager.NavigateTo("/404");
+                return;
+            }
 
             toDoViewModel = new ToDoViewModel
             {
@@ -47,7 +59,8 @@ namespace Local.Web.Components.ToDo.Pages
                 StatusChangedBy = toDoItem.StatusChangedBy?.UserName ?? toDoItem.StatusChangedBy?.Email
             };
 
-           users = await userRepository.GetAll().ToListAsync();
+            users = await userRepository.GetAll().ToListAsync();
+            isDisabled = toDoItem.CreatedBy.UserName != currentUserName;
         }
 
         private async Task HandleValidSubmit()
@@ -63,8 +76,7 @@ namespace Local.Web.Components.ToDo.Pages
                 if (toDoItem.Status != toDoViewModel.Status)
                 {
                     toDoItem.Status = toDoViewModel.Status;
-                    string? userName = httpContextAccessor.HttpContext.User.Identity.Name;
-                    var user = await userRepository.GetByUserNameAsync(userName);
+                    var user = await userRepository.GetByUserNameAsync(currentUserName);
                     toDoItem.StatusChanged = DateTime.Now;
                     toDoItem.StatusChangedBy = user;
                 }

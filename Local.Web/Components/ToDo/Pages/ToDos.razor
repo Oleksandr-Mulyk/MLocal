@@ -99,7 +99,10 @@ else
                     <p>@toDo.DeathLine.ToString()</p>
                     <p>
                         <button class="btn btn-primary" @onclick="() => NavigateToEditToDo(toDo.Id)">@Loc["View"]</button>
-                        <button class="btn btn-danger" @onclick="() => NavigateToDeleteToDo(toDo.Id)">@Loc["Delete"]</button>
+                        @if (toDo.CreatedBy.UserName == currentUserName)
+                        {
+                            <button class="btn btn-danger" @onclick="() => NavigateToDeleteToDo(toDo.Id)">@Loc["Delete"]</button>
+                        }
                     </p>
                 </div>
             }

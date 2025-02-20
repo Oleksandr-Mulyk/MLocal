@@ -12,7 +12,11 @@ namespace Local.Web.Components.ToDo.Pages
 {
     [Route(ToDoRoute.TODO_LIST_PAGE)]
     [Authorize]
-    public partial class ToDos(IRepository<IToDoItem> toDoRepository, NavigationManager navigationManager)
+    public partial class ToDos(
+        IRepository<IToDoItem> toDoRepository,
+        NavigationManager navigationManager,
+        IHttpContextAccessor httpContextAccessor
+        )
     {
         private const string TITLE_COLUMN_NAME = "Title";
 
@@ -65,6 +69,8 @@ namespace Local.Web.Components.ToDo.Pages
             { DEATHLINE_COLUMN_NAME, "Death Line" }
         };
 
+        private readonly string? currentUserName = httpContextAccessor.HttpContext.User.Identity.Name;
+
         protected async override Task OnInitializedAsync() =>
             await LoadPageAsync(currentPage);
 
@@ -99,7 +105,13 @@ namespace Local.Web.Components.ToDo.Pages
                             t => t.DeathLine <= s.Value,
                         _ => throw new NotImplementedException()
                     })
-                );
+                )
+                .Concat(
+                [
+                    t => (t.CreatedBy != null && t.CreatedBy.UserName == currentUserName) ||
+                    t.AssignedTo.Any(u => u.UserName == currentUserName) ||
+                    t.VisibleFor.Any(u => u.UserName == currentUserName)
+                ]);
 
             Expression<Func<IToDoItem, string?>> sort = u => EF.Property<string>(u, currentSortColumn);
 
